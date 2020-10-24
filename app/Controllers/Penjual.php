@@ -2,11 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+use App\Models\TokoModel;
+
 class Penjual extends BaseController
 {
+    protected $tokoModel;
+    protected $userModel;
+
     public function __construct()
     {
         $session = session();
+        $this->tokoModel = new TokoModel();
+        $this->userModel = new UserModel();
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
@@ -43,14 +51,23 @@ class Penjual extends BaseController
     public function ubah_profile()
     {
         $session = session();
+
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
+
+        $toko = $this->tokoModel->where('Id_toko', $session->Id_toko)
+            ->first();
+        $user =  $this->userModel->where('Id_toko', $session->Id_toko)
+            ->first();
         $data = [
             'title' => 'Ubah Profile | Dashboard Penjual',
-            'content' => 'Penjual/ubah-profile'
+            'content' => 'Penjual/ubah-profile',
+            'toko' => $toko,
+            'user' => $user
         ];
 
+        // var_dump($toko["Nama"]);
         return view('p_layout/wrapper', $data);
     }
 

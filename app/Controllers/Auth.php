@@ -12,13 +12,19 @@ class Auth extends BaseController
 
     public function __construct()
     {
-        $session = session();
         $this->userModel = new UserModel();
         $this->tokoModel = new TokoModel();
+        if (session()->email != null || session()->email != '') {
+            return redirect()->to('/penjual');
+        }
     }
 
     public function index()
     {
+        $session = session();
+        if (session()->email != null || session()->email != '') {
+            return redirect()->to('/penjual');
+        }
         $data = [
             'title' => 'Home | Dashboard Penjual'
         ];
@@ -28,6 +34,9 @@ class Auth extends BaseController
 
     public function register()
     {
+        if (session()->email != null || session()->email != '') {
+            return redirect()->to('/penjual');
+        }
         $data = [
             'title' => 'Tambah Barang | Dashboard Penjual',
             'validation' => \Config\Services::validation()
@@ -132,7 +141,6 @@ class Auth extends BaseController
 
     public function login()
     {
-        $session = session();
         $modellogin = new UserModel();
 
         $email = $this->request->getPost('email');
@@ -151,7 +159,7 @@ class Auth extends BaseController
                 return redirect()->to('/Penjual');
             }
         } {
-            $session->setFlashdata('fail_login', 'Maaf, email atau pasword yang anda masukkan tidak sesuai');
+            session()->setFlashdata('fail_login', 'Maaf, email atau pasword yang anda masukkan tidak sesuai');
             return redirect()->to('/auth');
         }
     }

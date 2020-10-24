@@ -1,134 +1,144 @@
 /* Global */
 
 body {
-    font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 footer {
-    font-weight: 300;
-    font-size: 9px;
-    text-align: center;
-    margin-bottom: 10px;
-    color: rgb(46, 46, 46);
+  font-weight: 300;
+  font-size: 9px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: rgb(46, 46, 46);
 }
 
 .btn-outline-success {
-    color: #065446 !important;
-    border-color: #065446 !important;
+  color: #065446 !important;
+  border-color: #065446 !important;
 }
 
 .text-hijau-1 {
-    color: #065446;
+  color: #065446;
 }
 
 .text-hijau-2 {
-    color: #197163;
+  color: #197163;
 }
 
 .text-hijau-3 {
-    color: #65AE9B;
+  color: #65ae9b;
 }
 
 .text-peach {
-    color: #FADCAC;
+  color: #fadcac;
 }
 
 .btn-success {
-    background-color: #065446 !important;
+  background-color: #065446 !important;
 }
 
 .btn-success-2 {
-    background-color: #197163 !important;
-    color: white !important;
+  background-color: #197163 !important;
+  color: white !important;
 }
 
 .bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 /* Navbar */
 .navbar {
-    font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 .navbar-brand {
-    font-size: 30px !important;
-    line-height: 35px !important;
-    font-weight: 300 !important;
+  font-size: 30px !important;
+  line-height: 35px !important;
+  font-weight: 300 !important;
 }
 
 .navbar-light {
-    background-color: #FFFFFF !important;
-    box-shadow: 0px 2px 8px rgba(66, 66, 66, 0.37);
+  background-color: #ffffff !important;
+  box-shadow: 0px 2px 8px rgba(66, 66, 66, 0.37);
 }
 
 .navbar-light .navbar-nav .active {
-    color: #065446 !important;
+  color: #065446 !important;
 }
 
 .navbar-light .navbar-toggler {
-    border-color: rgba(0,0,0,0) !important;
+  border-color: rgba(0, 0, 0, 0) !important;
 }
 
 /* Index Home */
 
 .header .welcome {
-    background-color:#65AE9B;
-    color: white;
-    padding: 80px 40px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
+  background-color: #65ae9b;
+  color: white;
+  padding: 80px 40px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
 .main-content .tambah-produk .btn-add {
-    font-size: 18px !important;
-    height: 43px !important;
-    border-radius: 15px !important;
-    box-shadow: 0px 12px 26px#1971627a;
+  font-size: 18px !important;
+  height: 43px !important;
+  border-radius: 15px !important;
+  box-shadow: 0px 12px 26px#1971627a;
 }
 
 .main-content .produk-saya .produks {
-    margin-top: 30px;
-    background-color: white;
-    box-shadow: 2px 10px 22px rgba(128, 128, 128, 0.493);
+  margin-top: 30px;
+  background-color: white;
+  box-shadow: 2px 10px 22px rgba(128, 128, 128, 0.493);
 }
 
-.main-content .produk-saya .produks .col-12 , .main-content .produk-saya .produks .col-5{
-    padding-left: 8px;
-    padding-right: 0;
+.main-content .produk-saya .produks .col-12,
+.main-content .produk-saya .produks .col-5 {
+  padding-left: 8px;
+  padding-right: 0;
 }
 
 .main-content .produk-saya .produks p {
-    font-size: 11px;
+  font-size: 11px;
 }
 
 .main-content .produk-saya .produks img {
-    height: 100% !important;
+  height: 100% !important;
 }
 
 .main-content .produk-saya .produks .ubah-produk {
-    padding-left: 3px;
+  padding-left: 3px;
 }
 
 .main-content .produk-saya .produks .btn {
-    border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 /* Ubah Profile */
 
 .main-content .profile-saya img {
-    border: .6px solid #75757591;
+  border: 0.6px solid #75757591;
 }
 
 .main-content .profile-saya a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .main-content .profile-saya textarea {
-    font-size: 12px;
+  font-size: 12px;
 }
 
-.main-content .profile-saya .show {
+/* .main-content .profile-saya .show {
     background-color: rgb(206, 206, 206);
     height: 200px;
+} */
+
+.nav-pills .nav-link {
+  color: #065446;
+}
+
+.nav-pills .nav-link.active {
+  color: #fff !important;
+  background-color: #197163 !important;
 }

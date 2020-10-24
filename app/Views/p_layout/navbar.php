@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            
+
             <?php
             $uri = service('uri');
             if ($uri->getSegment(2) == "") {
@@ -56,16 +56,16 @@
 
             <?php
             $session = session();
-            if ($session->email == null){
+            if ($session->email == null) {
             ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('/home'); ?>" ><button class="btn btn-success">Kembali ke Home</button></a>
+                    <a class="nav-link" href="<?= base_url('/home'); ?>"><button class="btn btn-success">Kembali ke Halaman Utama</button></a>
                 </li>
             <?php
-            }else{
+            } else {
             ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('/home'); ?>" ><button class="btn btn-success">Kembali ke Home</button></a>
+                    <a class="nav-link" href="<?= base_url('/home'); ?>"><button class="btn btn-success">Kembali ke Halaman Utama</button></a>
                 </li>
             <?php
             }
@@ -92,7 +92,8 @@
 </nav>
 
 <section class="header">
-        <div class="welcome text-center">
-            <h1>Welcome, <?php $session = session();echo $session->Nama_toko; ?></h1>
-        </div>
-    </section>
+    <div class="welcome text-center">
+        <h1>Welcome, <?php $session = session();
+                        echo $session->Nama_toko; ?></h1>
+    </div>
+</section>
