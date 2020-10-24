@@ -8,6 +8,8 @@ use App\Models\TokoModel;
 class Auth extends BaseController
 {
     protected $userModel;
+    protected $tokoModel;
+
     public function __construct()
     {
         $session = session();
@@ -53,7 +55,7 @@ class Auth extends BaseController
                 ]
             ],
             'nama_toko' => [
-                'rules' => 'required|is_unique[toko.Nama_toko]',
+                'rules' => 'required|is_unique[toko.Nama]',
                 'errors' => [
                     'required' => 'Nama toko tidak boleh kosong',
                     'is_unique' => 'Nama toko sudah digunakan'
@@ -93,10 +95,13 @@ class Auth extends BaseController
 
             return redirect()->to('/auth/register')->withInput()->with('validation', $validation);
         }
+        helper('text');
+        $subs_nama = substr($this->request->getVar('nama_toko'), 0, 4);
+        $id_toko = $subs_nama . date('dmyy') . '-' . random_string('alpha', 10);
 
-        $this->userModel->save([
+        $save_user = $this->userModel->save([
             'Nama' => $this->request->getVar('nama_pemilik'),
-            'Nama_toko' => $this->request->getVar('nama_toko'),
+            'Id_toko' => $id_toko,
             'Email' => $this->request->getVar('email'),
             'Password' => $this->request->getVar('password'),
             'No_ktp' => $this->request->getVar('no_ktp'),
@@ -104,14 +109,25 @@ class Auth extends BaseController
             'No_handphone' => $this->request->getVar('no_handphone')
         ]);
 
-        $this->tokoModel->save([
-            'Nama_toko' => $this->request->getVar('nama_toko'),
+        $save_toko = $this->tokoModel->save([
+            'Id_toko' => $id_toko,
+            'Nama' => $this->request->getVar('nama_toko'),
+            'Deskripsi' => '',
             'Alamat' => $this->request->getVar('alamat'),
+            'Image_logo' => ''
         ]);
-        $session = session();
-        $session->setFlashdata('pesan', 'Selamat! Akun anda berhasil dibuat silahkan login!');
 
-        return redirect()->to('/auth');
+
+        if ($save_toko) {
+            $session = session();
+            $session->setFlashdata('pesan', 'Selamat! Akun anda berhasil dibuat silahkan login!');
+
+            return redirect()->to('/auth');
+        } else {
+            $validation = \Config\Services::validation();
+
+            return redirect()->to('/auth/register')->withInput()->with('validation', $validation);
+        }
     }
 
     public function login()
@@ -122,12 +138,16 @@ class Auth extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
+
         $cek = $modellogin->get_login($email, $password);
+        $Nama_toko = $this->tokoModel->where('Id_toko', $cek['Id_toko'])
+            ->first();;
         if ($cek) {
             if (($cek['Email'] == $email) && ($cek['Password'] == $password)) {
                 session()->set('email', $cek['Email']);
                 session()->set('Nama', $cek['Nama']);
-                session()->set('Nama_toko', $cek['Nama_toko']);
+                session()->set('Nama_toko', $Nama_toko["Nama"]);
+                session()->set('Id_toko', $cek["Id_toko"]);
                 return redirect()->to('/Penjual');
             }
         } {

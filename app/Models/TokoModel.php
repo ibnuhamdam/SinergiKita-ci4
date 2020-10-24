@@ -7,7 +7,6 @@ use CodeIgniter\Model;
 class TokoModel extends Model
 {
     protected $table = 'toko';
-    protected $primaryKey = 'Id_toko';
     protected $useTimestamps = true;
-    protected $allowedFields = ["Nama", "Deskripsi", "Alamat", "Image_logo"];
+    protected $allowedFields = ["Id_toko", "Nama", "Deskripsi", "Alamat", "Image_logo"];
 }
