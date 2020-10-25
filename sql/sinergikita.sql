@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2020 at 06:01 AM
+-- Generation Time: Oct 25, 2020 at 03:53 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -32,12 +32,20 @@ CREATE TABLE `barang` (
   `Id_toko` varchar(100) NOT NULL,
   `Nama` varchar(255) NOT NULL,
   `Deskripsi` varchar(600) NOT NULL,
-  `harga` varchar(25) NOT NULL,
-  `kategori` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
+  `Harga` varchar(25) NOT NULL,
+  `Kategori` varchar(255) NOT NULL,
+  `Slug` varchar(255) DEFAULT NULL,
+  `Gambar` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id`, `Id_toko`, `Nama`, `Deskripsi`, `Harga`, `Kategori`, `Slug`, `Gambar`, `created_at`, `updated_at`) VALUES
+(1, 'Madu23102020-gCfDRksxLy', 'Madu Hutan Sumatra', 'Madu Hutan asli sumatra, hanya dengan 115.000 anda bisa mendapatkan 1 madu hutan asli sumatra', '126.000', 'Makanan', 'madu-hutan-sumatra', '1603636864_e5ed278dec63a09666c9.jpg', '2020-10-25 14:16:53', '2020-10-25 09:42:08');
 
 -- --------------------------------------------------------
 
@@ -74,7 +82,7 @@ CREATE TABLE `toko` (
 --
 
 INSERT INTO `toko` (`id`, `Id_toko`, `Nama`, `Deskripsi`, `Alamat`, `Image_logo`, `created_at`, `updated_at`) VALUES
-(1, 'Madu23102020-gCfDRksxLy', 'Madu Lezat Basari', '', 'Sampangan, Semarang', '', '2020-10-23 22:49:54', '2020-10-23 22:49:54');
+(1, 'Madu23102020-gCfDRksxLy', 'Madu Lezat Basari', 'madu lezat nikmat mantap besara l asd asdakda okaysh', 'Sampangan, Semarang', '1603609748_973fdb8009ec6d537602.jpg', '2020-10-23 22:49:54', '2020-10-25 02:15:30');
 
 -- --------------------------------------------------------
 
@@ -100,7 +108,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Id_user`, `Id_toko`, `Nama`, `Email`, `Password`, `No_ktp`, `Alamat`, `No_handphone`, `created_at`, `updated_at`) VALUES
-(1, 'Madu23102020-gCfDRksxLy', 'Basari', 'bas@asd.com', 'basari', 2147483647, 'Sampangan, Semarang', '085727633969', '2020-10-23 22:49:54', '2020-10-23 22:49:54');
+(1, 'Madu23102020-gCfDRksxLy', 'Madu Lezat Basari', 'bas@asd.com', 'basari', 2147483647, 'Sampangan, Semarang', '085727633969', '2020-10-23 22:49:54', '2020-10-25 01:05:28'),
+(4, '', 'Madu Lezat Basari', '', '', 0, 'Sampangan, Semarang', '', '2020-10-25 00:54:49', '2020-10-25 01:05:28');
 
 -- --------------------------------------------------------
 
@@ -158,7 +167,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `kategori`
@@ -176,7 +185,7 @@ ALTER TABLE `toko`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `Id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
