@@ -23,26 +23,47 @@
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="row photo-profile">
                                 <div class="col-12 justify-content-center text-center">
-                                    <form action="/penjual/update_toko" method="POST">
+                                    <form action="/penjual/update_toko" method="POST" enctype="multipart/form-data">
                                         <?php csrf_field(); ?>
-                                        <img src="../assets/image/b-logo.jpg" class=" rounded-circle" width="120" height="120" alt="">
+                                        <div id="show">
+                                            <?php if ($toko['Image_logo'] == null || $toko['Image_logo'] == '') { ?>
+                                                <img src="../assets/image/b-logo.jpg" class="rounded-circle" id="img-show" width="120" height="120" alt="">
+                                            <?php } else { ?>
+                                                <img src="<?= base_url('/uploads/penjual') . "/" . $toko['Image_logo']; ?>" class="rounded-circle" id="img-show" width="120" height="120" alt="">
+                                            <?php } ?>
+
+                                        </div>
                                         <br>
-                                        <a href="" class="text-danger">Hapus Foto</a> | <a href="" class="text-primary">Ubah
+                                        <input type="file" class="" name="avatar_toko" id="file_ava" accept="image/*" onchange="loadFile(event)">
+                                        <a href="#" id="changeFoto" onclick="change()" class="text-primary <?= ($validation->hasError('avatar_toko')) ? 'is-invalid' : '' ?>">Ubah
                                             Foto</a>
+                                        <div class="invalid-feedback">
+                                            <?= $validation->getError('avatar_toko'); ?>
+                                        </div>
 
                                         <div class="form-group text-left mt-4 px-4">
                                             <label for="exampleInputEmail1">Nama Toko</label>
-                                            <input type="text" name="nama" class="form-control text-center" id="exampleInputEmail1" value="<?= $toko['Nama']; ?>" disabled>
+                                            <input type="hidden" name="nama" id="" value="<?= $toko['Nama']; ?>">
+                                            <input type="text" class="form-control text-center <?= ($validation->hasError('nama')) ? 'is-invalid' : '' ?>" id="exampleInputEmail1" value="<?= $toko['Nama']; ?>" disabled>
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('nama'); ?>
+                                            </div>
                                         </div>
 
                                         <div class="form-group text-left mt-4 px-4">
                                             <label for="exampleFormControlTextarea1">Deskripsi Toko</label>
-                                            <textarea class="form-control" name="deskripsi" id="exampleFormControlTextarea1" rows="3" placeholder="<?= $toko['Deskripsi']; ?>"></textarea>
+                                            <textarea class="form-control <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : '' ?>" name="deskripsi" id="exampleFormControlTextarea1" rows="3"><?= $toko['Deskripsi']; ?></textarea>
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('deskripsi'); ?>
+                                            </div>
                                         </div>
 
                                         <div class="form-group text-left mt-4 px-4">
                                             <label for="exampleInputEmail1">Alamat Toko</label>
-                                            <input type="text" name="alamat" class="form-control text-center" id="exampleInputEmail1" value="<?= $toko['Alamat']; ?>">
+                                            <input type="text" name="alamat" class="form-control text-center <?= ($validation->hasError('alamat')) ? 'is-invalid' : '' ?>" id="exampleInputEmail1" value="<?= $toko['Alamat']; ?>">
+                                            <div class="invalid-feedback">
+                                                <?= $validation->getError('alamat'); ?>
+                                            </div>
                                         </div>
 
                                         <div class="row px-4 mt-5">

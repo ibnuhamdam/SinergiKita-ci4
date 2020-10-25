@@ -129,10 +129,10 @@ footer {
   font-size: 12px;
 }
 
-/* .main-content .profile-saya .show {
-    background-color: rgb(206, 206, 206);
-    height: 200px;
-} */
+.main-content .profile-saya .show-camera {
+  background-color: rgb(206, 206, 206);
+  height: 200px;
+}
 
 .nav-pills .nav-link {
   color: #065446;

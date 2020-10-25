@@ -15,7 +15,7 @@
 
 <?php
 $uri = service('uri');
-if ($uri->getSegment(2) == "add-product") {
+if ($uri->getSegment(2) == "add-product" || $uri->getSegment(2) == "") {
 ?>
     <script>
         var loadFile = function(event) {
@@ -39,8 +39,39 @@ if ($uri->getSegment(2) == "add-product") {
         })
     </script>
 <?php
-}
+} else if ($uri->getSegment(2) == "ubah-profile" || $uri->getSegment(2) == "ubah-product" || $uri->getSegment(2) == "ubah_profile") {
 ?>
+    <script>
+        var loadFile = function(event) {
+            var imageWrap = document.getElementById('show');
+            var image = document.getElementById('img-show');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            imageWrap.style.backgroundColor = "none";
+            imageWrap.style.height = "auto";
+        };
+    </script>
+    <script>
+        var input = document.getElementById('file_ava');
+        input.style.display = "none";
+
+        function change() {
+            $(document).ready(function() {
+                $("#file_ava").click();
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            // Format mata uang.
+            $('.uang').mask('000.000.000.000.000.000', {
+                reverse: true
+            });
+
+        })
+    </script>
+<?php
+} ?>
 
 <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

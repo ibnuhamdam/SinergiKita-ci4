@@ -4,17 +4,20 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\TokoModel;
+use App\Models\BarangModel;
 
 class Penjual extends BaseController
 {
     protected $tokoModel;
     protected $userModel;
+    protected $barangModel;
 
     public function __construct()
     {
         $session = session();
         $this->tokoModel = new TokoModel();
         $this->userModel = new UserModel();
+        $this->barangModel = new BarangModel();
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
@@ -26,9 +29,15 @@ class Penjual extends BaseController
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
+
+        $barang = $this->barangModel->where('Id_toko', $session->Id_toko)->findAll();
+
+        // var_dump($barang);
+
         $data = [
             'title' => 'Home | Dashboard Penjual',
-            'content' => 'Penjual/index'
+            'content' => 'Penjual/index',
+            'barang' => $barang
         ];
 
         return view('p_layout/wrapper', $data);
@@ -70,6 +79,108 @@ class Penjual extends BaseController
 
         // var_dump($toko["Nama"]);
         return view('p_layout/wrapper', $data);
+    }
+
+    public function ubah_product($id)
+    {
+        $session = session();
+
+        if ($session->email == null || $session->email == '') {
+            return redirect()->to('/auth');
+        }
+
+        $barang = $this->barangModel->find($id);
+
+        $data = [
+            'title' => 'Ubah Profile | Dashboard Penjual',
+            'content' => 'Penjual/ubah-product',
+            'barang' => $barang,
+            'validation' => \Config\Services::validation()
+        ];
+
+        return view('p_layout/wrapper', $data);
+    }
+
+    public function update_product($id)
+    {
+        // dd($id);
+        // validasi input
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Barang tidak boleh kosong'
+                ]
+            ],
+            'deskripsi' => [
+                'rules' => 'required|min_length[30]',
+                'errors' => [
+                    'required' => 'Deskripsi tidak boleh kosong',
+                    'min_length' => 'Deskripsi harus lebih dari 10 kata'
+                ]
+            ],
+            'harga' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harga tidak boleh kosong'
+                ]
+            ],
+            'kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Pilih salah satu kategori'
+                ]
+            ],
+            'gambar' => [
+                'rules' => 'max_size[gambar, 2048]|ext_in[gambar,jpg,png,jpeg]',
+                'errors' => [
+                    'max_size' => 'Maximum ukuran profile photo 2 Mb',
+                    'ext_in' => 'Pastikan gambar anda .jpg .png atau .jpeg'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+
+
+            // dd($validation->getErrors());
+            return redirect()->to("/penjual/ubah-product/$id")->withInput()->with('validation', $validation);
+        }
+
+        if ($this->request->getFile('gambar') != '') {
+            $image = $this->request->getFile('gambar');
+            $image_name = $image->getRandomName();
+            $image->move(ROOTPATH . 'public/uploads/barang', $image_name);
+
+            $data = [
+                'Nama' => $this->request->getVar('nama'),
+                'Deskripsi' => $this->request->getVar('deskripsi'),
+                'Harga' => $this->request->getVar('harga'),
+                'Kategori' => $this->request->getVar('kategori'),
+                'Gambar' => $image_name
+            ];
+        } else {
+
+            $data = [
+                'Nama' => $this->request->getVar('nama'),
+                'Deskripsi' => $this->request->getVar('deskripsi'),
+                'Harga' => $this->request->getVar('harga'),
+                'Kategori' => $this->request->getVar('kategori')
+            ];
+        }
+
+        $this->barangModel->set($data);
+        $update = $this->barangModel->update();
+
+        if ($update) {
+            $session = session();
+            $session->setFlashdata('pesan', 'Barang berhasil di ubah !');
+
+            return redirect()->to('/Penjual');
+        } else {
+            $validation = \Config\Services::validation();
+
+            return redirect()->to("/penjual/ubah-product/$id")->withInput()->with('validation', $validation);
+        }
     }
 
     public function update_pemilik()
@@ -141,6 +252,7 @@ class Penjual extends BaseController
 
     public function update_toko()
     {
+        helper('filesystem');
         // validasi input
         if (!$this->validate([
             'nama' => [
@@ -152,7 +264,7 @@ class Penjual extends BaseController
             'deskripsi' => [
                 'rules' => 'required|min_length[30]',
                 'errors' => [
-                    'required' => 'Email tidak boleh kosong',
+                    'required' => 'Deskripsi tidak boleh kosong',
                     'min_length' => 'Deskripsi harus lebih dari 10 kata'
                 ]
             ],
@@ -161,31 +273,54 @@ class Penjual extends BaseController
                 'errors' => [
                     'required' => 'Alamat tidak boleh kosong'
                 ]
+            ],
+            'avatar_toko' => [
+                'rules' => 'max_size[avatar_toko, 2048]|ext_in[avatar_toko,jpg,png,jpeg]',
+                'errors' => [
+                    'max_size' => 'Maximum ukuran profile photo 2 Mb',
+                    'ext_in' => 'Pastikan gambar anda .jpg .png atau .jpeg'
+                ]
             ]
         ])) {
             $validation = \Config\Services::validation();
 
-            return redirect()->to('/auth/register')->withInput()->with('validation', $validation);
+
+            // dd($validation->getErrors());
+            return redirect()->to('/penjual/ubah-profile')->withInput()->with('validation', $validation);
         }
 
-        $data = [
-            'Nama' => $this->request->getVar('nama_pemilik'),
-            'Deskripsi' => $this->request->getVar('deskripsi'),
-            'Alamat' => $this->request->getVar('alamat')
-        ];
+        if ($this->request->getFile('avatar_toko') != '') {
+            $image = $this->request->getFile('avatar_toko');
+            $image_name = $image->getRandomName();
 
-        $this->userModel->set($data);
-        $update = $this->userModel->insert();
+            $data = [
+                'Nama' => $this->request->getVar('nama'),
+                'Deskripsi' => $this->request->getVar('deskripsi'),
+                'Alamat' => $this->request->getVar('alamat'),
+                'Image_logo' => $image_name
+            ];
+            $image->move(ROOTPATH . 'public/uploads/penjual', $image_name);
+        } else {
+
+            $data = [
+                'Nama' => $this->request->getVar('nama'),
+                'Deskripsi' => $this->request->getVar('deskripsi'),
+                'Alamat' => $this->request->getVar('alamat')
+            ];
+        }
+
+        $this->tokoModel->set($data);
+        $update = $this->tokoModel->update();
 
         if ($update) {
             $session = session();
-            $session->setFlashdata('pesan', 'Selamat! Informasi akun anda berhasil diubah !');
+            $session->setFlashdata('pesan', 'Selamat! Informasi akun toko anda berhasil diubah !');
 
-            return redirect()->to('/Penjual/ubah-profile');
+            return redirect()->to('/Penjual/ubah_profile');
         } else {
             $validation = \Config\Services::validation();
 
-            return redirect()->to('/auth/register')->withInput()->with('validation', $validation);
+            return redirect()->to('/penjual/ubah_profile')->withInput()->with('validation', $validation);
         }
     }
 

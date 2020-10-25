@@ -45,7 +45,10 @@ $routes->get('/wishlist', 'Home::wishlist');
 $routes->get('/penjual', 'Penjual::index');
 $routes->get('/penjual/add-product', 'Penjual::add_product');
 $routes->get('/penjual/ubah-profile', 'Penjual::ubah_profile');
+$routes->get('/penjual/ubah-product', 'Penjual::ubah_product');
+$routes->get('/penjual/ubah-product/(:any)', 'Penjual::ubah_product/$1');
 // crud
+$routes->post('/penjual/update-product/(:any)', 'Penjual::update-product/$1');
 
 // AUTH
 $routes->get('/auth', 'Auth::index');
