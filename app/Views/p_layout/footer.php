@@ -15,7 +15,7 @@
 
 <?php
 $uri = service('uri');
-if ($uri->getSegment(2) == "add-product" || $uri->getSegment(2) == "") {
+if ($uri->getSegment(2) == "" || $uri->getSegment(2) == "add_product" || $uri->getSegment(2) == "add-product") {
 ?>
     <script>
         var loadFile = function(event) {
@@ -39,7 +39,7 @@ if ($uri->getSegment(2) == "add-product" || $uri->getSegment(2) == "") {
         })
     </script>
 <?php
-} else if ($uri->getSegment(2) == "ubah-profile" || $uri->getSegment(2) == "ubah-product" || $uri->getSegment(2) == "ubah_profile") {
+} else if ($uri->getSegment(2) == "ubah-profile" || $uri->getSegment(2) == "ubah-product" || $uri->getSegment(2) == "ubah_profile" || $uri->getSegment(2) == "ubah_product") {
 ?>
     <script>
         var loadFile = function(event) {
@@ -72,6 +72,17 @@ if ($uri->getSegment(2) == "add-product" || $uri->getSegment(2) == "") {
     </script>
 <?php
 } ?>
+
+<script>
+    $('#delete').on('show.bs.modal', function(event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var id = button.data('id') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('#delete-btn').attr("href", '<?= base_url('Penjual/delete_product') ?>/' + id)
+    })
+</script>
 
 <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

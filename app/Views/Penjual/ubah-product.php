@@ -12,7 +12,7 @@
                 <div class="profile-saya px-3 ">
                     <div class="row photo-profile">
                         <div class="col-12 justify-content-center text-center">
-                            <form action="<?= base_url(); ?>/penjual/update_product/<?= $barang['id']; ?>" method="POST" enctype="multipart/form-data">
+                            <form action="<?= base_url(); ?>/penjual/update-product/<?= $barang['id']; ?>" method="POST" enctype="multipart/form-data">
                                 <?php csrf_field(); ?>
                                 <div id="show">
                                     <?php if ($barang['Gambar'] == null || $barang['Gambar'] == '') { ?>

@@ -21,6 +21,7 @@ class Penjual extends BaseController
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function index()
@@ -33,6 +34,9 @@ class Penjual extends BaseController
         $barang = $this->barangModel->where('Id_toko', $session->Id_toko)->findAll();
 
         // var_dump($barang);
+        // $db = \Config\Database::connect();
+
+        // echo ($db->getLastQuery());
 
         $data = [
             'title' => 'Home | Dashboard Penjual',
@@ -51,8 +55,11 @@ class Penjual extends BaseController
         }
         $data = [
             'title' => 'Tambah Barang | Dashboard Penjual',
-            'content' => 'Penjual/add-product'
+            'content' => 'Penjual/add-product',
+            'validation' => \Config\Services::validation()
         ];
+
+        // echo $validation->listErrors();
 
         return view('p_layout/wrapper', $data);
     }
@@ -139,11 +146,11 @@ class Penjual extends BaseController
                 ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
+            // $validation = \Config\Services::validation();
 
 
             // dd($validation->getErrors());
-            return redirect()->to("/penjual/ubah-product/$id")->withInput()->with('validation', $validation);
+            return redirect()->to("/penjual/ubah_product/$id")->withInput();
         }
 
         if ($this->request->getFile('gambar') != '') {
@@ -169,17 +176,112 @@ class Penjual extends BaseController
         }
 
         $this->barangModel->set($data);
+        $this->barangModel->where('id', $id);
         $update = $this->barangModel->update();
 
         if ($update) {
             $session = session();
-            $session->setFlashdata('pesan', 'Barang berhasil di ubah !');
+            $session->setFlashdata('pesan', 'Data Produk berhasil di ubah !');
 
             return redirect()->to('/Penjual');
         } else {
-            $validation = \Config\Services::validation();
 
-            return redirect()->to("/penjual/ubah-product/$id")->withInput()->with('validation', $validation);
+            return redirect()->to("/penjual/ubah-product/$id")->withInput();
+        }
+    }
+
+    public function delete_product($id)
+    {
+        $delete = $this->barangModel->delete($id);
+        if ($delete) {
+            session()->setFlashdata('pesan', 'Data Produk berhasil dihapus !');
+            return redirect()->to('/Penjual');
+        } else {
+            session()->setFlashdata('pesan', 'Barang tidak berhasil di hapus !');
+            return redirect()->to('/Penjual');
+        }
+    }
+
+    public function save_product()
+    {
+        if (!$this->validate([
+            'nama' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Nama Barang tidak boleh kosong'
+                ]
+            ],
+            'deskripsi' => [
+                'rules' => 'required|min_length[30]',
+                'errors' => [
+                    'required' => 'Deskripsi tidak boleh kosong',
+                    'min_length' => 'Deskripsi harus lebih dari 10 kata'
+                ]
+            ],
+            'harga' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Harga tidak boleh kosong'
+                ]
+            ],
+            'kategori' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Kategori tidak boleh kosong'
+                ]
+            ],
+            'gambar' => [
+                'rules' => 'max_size[gambar,2048]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                'errors' => [
+                    'max_size' => 'Maximum ukuran profile photo 2 Mb',
+                    'is_image' => 'Pastikan anda mengupload berekstensi .jpg .png / .jpeg',
+                    'mime_in' => 'Pastikan gambar anda .jpg .png atau .jpeg'
+                ]
+            ]
+        ])) {
+            return redirect()->to("/penjual/add_product")->withInput();
+        }
+
+        $slug = url_title($this->request->getVar('nama'), '-', true);
+
+        // dd($this->request->getFile('gambar'));
+
+        if ($this->request->getFile('gambar') != '') {
+            $image = $this->request->getFile('gambar');
+            $image_name = $image->getRandomName();
+            $image->move(ROOTPATH . 'public/uploads/barang', $image_name);
+
+            $data = [
+                'Id_toko' => session()->Id_toko,
+                'Nama' => $this->request->getVar('nama'),
+                'Deskripsi' => $this->request->getVar('deskripsi'),
+                'Harga' => $this->request->getVar('harga'),
+                'Kategori' => $this->request->getVar('kategori'),
+                'Slug' => $slug,
+                'Gambar' => $image_name
+            ];
+        } else {
+
+            $data = [
+                'Id_toko' => session()->Id_toko,
+                'Nama' => $this->request->getVar('nama'),
+                'Deskripsi' => $this->request->getVar('deskripsi'),
+                'Harga' => $this->request->getVar('harga'),
+                'Kategori' => $this->request->getVar('kategori'),
+                'Slug' => $slug
+            ];
+        }
+
+        $save = $this->barangModel->save($data);
+
+        if ($save) {
+            $session = session();
+            $session->setFlashdata('pesan', 'Data Produk berhasil di tambahkan !');
+
+            return redirect()->to('/Penjual');
+        } else {
+
+            return redirect()->to("/penjual/save_product")->withInput();
         }
     }
 
@@ -220,9 +322,8 @@ class Penjual extends BaseController
                 ]
             ],
         ])) {
-            $validation = \Config\Services::validation();
 
-            return redirect()->to('/Penjual/ubah_profile')->withInput()->with('validation', $validation);
+            return redirect()->to('/Penjual/ubah_profile')->withInput();
         }
 
 
@@ -244,9 +345,9 @@ class Penjual extends BaseController
 
             return redirect()->to('/penjual/ubah_profile');
         } else {
-            $validation = \Config\Services::validation();
+            // $validation = \Config\Services::validation();
 
-            return redirect()->to('/penjual/ubah_profile')->withInput()->with('validation', $validation);
+            return redirect()->to('/penjual/ubah_profile')->withInput();
         }
     }
 
@@ -282,11 +383,11 @@ class Penjual extends BaseController
                 ]
             ]
         ])) {
-            $validation = \Config\Services::validation();
+            // $validation = \Config\Services::validation();
 
 
             // dd($validation->getErrors());
-            return redirect()->to('/penjual/ubah-profile')->withInput()->with('validation', $validation);
+            return redirect()->to('/penjual/ubah-profile')->withInput();
         }
 
         if ($this->request->getFile('avatar_toko') != '') {
@@ -318,9 +419,9 @@ class Penjual extends BaseController
 
             return redirect()->to('/Penjual/ubah_profile');
         } else {
-            $validation = \Config\Services::validation();
+            // $validation = \Config\Services::validation();
 
-            return redirect()->to('/penjual/ubah_profile')->withInput()->with('validation', $validation);
+            return redirect()->to('/penjual/ubah_profile')->withInput();
         }
     }
 

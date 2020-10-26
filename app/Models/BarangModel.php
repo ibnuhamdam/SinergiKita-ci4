@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class BarangModel extends Model
 {
     protected $table = 'barang';
+    protected $useSoftDeletes = true;
     protected $useTimestamps = true;
     protected $allowedFields = ["Id_toko", "Nama", "Deskripsi", "Harga", "Kategori", "Slug", "Gambar"];
 }
