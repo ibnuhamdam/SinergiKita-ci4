@@ -40,6 +40,8 @@ $routes->get('/tentang-kami', 'Home::tentang_kami');
 $routes->get('/produk', 'Home::produk');
 $routes->get('/semua-penjual', 'Home::semua_penjual');
 $routes->get('/wishlist', 'Home::wishlist');
+// POST
+$routes->post('/home', 'Home::home');
 
 // Penjual Dashboard
 $routes->get('/penjual', 'Penjual::index');

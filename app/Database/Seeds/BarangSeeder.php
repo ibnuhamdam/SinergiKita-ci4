@@ -19,10 +19,10 @@ class BarangSeeder extends \CodeIgniter\Database\Seeder
         // ];
 
         $faker = \Faker\Factory::create('id_ID');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $nama = $faker->name;
             $data = [
-                'Id_toko' => 'qui70141168-molestiaeminima',
+                'Id_toko' => 'Madu23102020-gCfDRksxLy',
                 'Nama'    => $nama,
                 'Deskripsi'   => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
                 'Harga' => $faker->randomNumber($nbDigits = 3, $strict = false) . '.000',

@@ -21,7 +21,7 @@ class TokoSeeder extends \CodeIgniter\Database\Seeder
         $faker = \Faker\Factory::create('id_ID');
         for ($i = 0; $i < 5; $i++) {
             $data = [
-                'Id_toko' => $faker->word . $faker->randomNumber($nbDigits = 8, $strict = false) . '-' . $faker->word . $faker->word,
+                'Id_toko' => 'est56573394-providentut',
                 'Nama'    => $faker->name,
                 'Deskripsi'   => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
                 'Alamat' => $faker->address,

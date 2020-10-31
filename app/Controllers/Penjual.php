@@ -31,7 +31,7 @@ class Penjual extends BaseController
             return redirect()->to('/auth');
         }
 
-        $barang = $this->barangModel->where('Id_toko', $session->Id_toko)->findAll();
+        $barang = $this->barangModel->where('Id_toko', $session->Id_toko)->orderBy('id', 'DESC')->findAll();
 
         // var_dump($barang);
         // $db = \Config\Database::connect();

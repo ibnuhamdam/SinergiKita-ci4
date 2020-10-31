@@ -6,8 +6,10 @@
                 <form action="#">
                     <div class="form-group">
                         <div class="input-group relative ">
-                            <input type="text" class="form-control search-input shadow" placeholder="Cari Barang" aria-label="Search">
-                            <a href=""><i class="fas fa-search search-icon"></i></a>
+                            <form action="<?= base_url('Home/home'); ?>" method="POST">
+                                <input type="text" name="keyword" class="form-control search-input shadow" placeholder="Cari Barang" aria-label="Search">
+                                <a href="" type="submit"><i class="fas fa-search search-icon"></i></a>
+                            </form>
                         </div>
                     </div>
                 </form>
@@ -105,69 +107,30 @@
         <p class="mb-3 bold">Produk</p>
         <div class="row">
 
-            <div class="col-6 col-md-4 mt-3">
-                <a href="">
-                    <div class="card text-center" style="width: 100%;">
-                        <img src="assets/image/sayuran.png" class="card-img-top img-fluid" alt="Sayur Bayam Fresh">
-                        <div class="card-body">
-                            <p class="card-text judul-text  ">Sayur Bayam Fresh</p>
-                            <p class="card-text harga-text bold">Rp 10.000/kg</p>
+            <?php foreach ($barang as $b) : ?>
+                <div class="col-6 col-md-4 mt-3">
+                    <a href="">
+                        <div class="card text-center" style="width: 100%;">
+                            <?php if ($b['Gambar'] != '') { ?>
+                                <img src="<?= base_url('uploads/barang') . '/' . $b['Gambar']; ?>" class="card-img-top img-fluid" alt="<?= $b["Nama"]; ?>">
+                            <?php } else { ?>
+                                <img src="<?= base_url('assets/image'); ?>/image.png" class="card-img-top img-fluid" alt="<?= $b["Nama"]; ?>">
+                            <?php } ?>
+                            <div class="card-body">
+                                <p class="card-text judul-text  "><?= $b['Nama']; ?></p>
+                                <p class="card-text harga-text bold">Rp <?= $b['Harga']; ?></p>
+                            </div>
+                            <div class="card-footer">
+                                <?= $b['Alamat']; ?>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            karangpandan, karangayar kota
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            <?php endforeach; ?>
 
-            <div class="col-6 col-md-4 mt-3">
-                <a href="">
-                    <div class="card text-center" style="width: 100%;">
-                        <img src="assets/image/sayuran.png" class="card-img-top img-fluid" alt="Sayur Bayam Fresh">
-                        <div class="card-body">
-                            <p class="card-text judul-text  ">Sayur Bayam Fresh</p>
-                            <p class="card-text harga-text bold">Rp 10.000/kg</p>
-                        </div>
-                        <div class="card-footer">
-                            karangpandan, karangayar kota
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-6 col-md-4 mt-3">
-                <a href="">
-                    <div class="card text-center" style="width: 100%;">
-                        <img src="assets/image/sayuran.png" class="card-img-top img-fluid" alt="Sayur Bayam Fresh">
-                        <div class="card-body">
-                            <p class="card-text judul-text  ">Sayur Bayam Fresh</p>
-                            <p class="card-text harga-text bold">Rp 10.000/kg</p>
-                        </div>
-                        <div class="card-footer">
-                            karangpandan, karangayar kota
-                        </div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="col-6 col-md-4 mt-3">
-                <a href="">
-                    <div class="card text-center" style="width: 100%;">
-                        <img src="assets/image/sayuran.png" class="card-img-top img-fluid" alt="Sayur Bayam Fresh">
-                        <div class="card-body">
-                            <p class="card-text judul-text  ">Sayur Bayam Fresh</p>
-                            <p class="card-text harga-text bold">Rp 10.000/kg</p>
-                        </div>
-                        <div class="card-footer">
-                            karangpandan, karangayar kota
-                        </div>
-                    </div>
-                </a>
-            </div>
 
             <div class="load-more col-12 text-center mt-3">
-                <a href="produk.html"><button class="btn btn-success btn-load">Lihat lainnya<i class="fas fa-arrow-circle-right"></i></button>
-                </a>
+                <?= $pager->links('barang', 'bs_pager'); ?>
             </div>
 
         </div>

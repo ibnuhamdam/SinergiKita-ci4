@@ -2,27 +2,48 @@
 
 namespace App\Controllers;
 
+use App\Models\BarangModel;
+
 class Home extends BaseController
 {
+	protected $barangModel;
+
+	public function __construct()
+	{
+		$this->barangModel = new BarangModel();
+	}
+
 	public function index()
 	{
-		
+
+		$barang = $this->barangModel->findAll();
+
 		$data = [
-			'title' => 'Home | Sinergi Kita'
+			'title' => 'Home | Sinergi Kita',
+			'barang' => $barang
 		];
 
 		echo view('layout/header', $data);
-		echo view('Home/index');
+		echo view('Home/index', $data);
 		echo view('layout/footer');
 	}
 
 	public function home()
 	{
+
+		$keyword = $this->request->getVar('keyword');
+		if ($keyword) {
+			$barang = $this->barangModel->search($keyword);
+		} else {
+			$barang = $this->barangModel->get_barang();
+		}
+
 		$data = [
 			'title' => 'Home | Sinergi Kita',
-			'content' => 'Home/home'
+			'content' => 'Home/home',
+			'barang' => $barang->paginate(8, 'barang'),
+			'pager' => $this->barangModel->pager
 		];
-
 		return view('layout/wrapper', $data);
 	}
 
