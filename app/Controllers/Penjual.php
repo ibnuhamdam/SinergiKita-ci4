@@ -351,7 +351,7 @@ class Penjual extends BaseController
         }
     }
 
-    public function update_toko()
+    public function update_toko($id)
     {
         helper('filesystem');
         // validasi input
@@ -411,7 +411,7 @@ class Penjual extends BaseController
         }
 
         $this->tokoModel->set($data);
-        $update = $this->tokoModel->update();
+        $update = $this->tokoModel->update($id);
 
         if ($update) {
             $session = session();

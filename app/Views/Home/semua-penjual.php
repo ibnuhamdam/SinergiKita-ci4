@@ -36,172 +36,45 @@
 
                 <div class="row justify-content-center mt-3">
 
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <?php foreach ($user as $u) : ?>
+                        <div class="col-6 col-md-4 py-2">
+                            <div class="Penjual">
+                                <a href="">
+                                    <div class="card text-center">
+                                        <div class="col-12">
+                                            <?php if ($u["Image_logo"] != null) {
+                                            ?>
+                                                <img src="<?= base_url('/uploads/penjual') . '/' . $u["Image_logo"]; ?>" class="rounded-circle " width="120" height="120" alt="ava">
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <img src="/assets/image/shop.png" class="rounded-circle " width="120" height="120" alt="ava">
+                                            <?php
+                                            } ?>
 
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5><?= $u["Nama"]; ?></h5>
+                                            <p class="card-text"><?= $u["Deskripsi"]; ?>
+                                            </p>
 
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
+                                        </div>
+                                        <div class="card-footer">
+                                            <p class="card-text bold"><?= $u["Alamat"]; ?></p>
+                                        </div>
                                     </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-4 py-2">
-                        <div class="Penjual">
-                            <a href="">
-                                <div class="card text-center">
-                                    <div class="col-12">
-                                        <img src="assets/image/sayuran.png" class="img-fluid rounded-circle " width="80%" alt="ava">
-                                    </div>
-                                    <div class="card-body">
-                                        <h5>Bukhori Shop</h5>
-                                        <p class="card-text">Pandan Lor No.06 Karangpandhan, Karanganyar, JawaTengah
-                                        </p>
-                                        <p class="card-text bold">Kota Karanganyar</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
 
                 </div>
 
             </div>
 
             <div class="col-12 mt-5 text-center">
-                <div class="row justify-content-center">
-                    <nav aria-label="..." class="justify-content-center">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
-
+                <div class="load-more col-12 text-center mt-3">
+                    <?= $pager->links('barang', 'bs_pager'); ?>
                 </div>
             </div>
 

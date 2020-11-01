@@ -23,11 +23,11 @@
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="row photo-profile">
                                 <div class="col-12 justify-content-center text-center">
-                                    <form action="/penjual/update_toko" method="POST" enctype="multipart/form-data">
+                                    <form action="/penjual/update_toko/<?= session()->id; ?>" method="POST" enctype="multipart/form-data">
                                         <?php csrf_field(); ?>
                                         <div id="show">
                                             <?php if ($toko['Image_logo'] == null || $toko['Image_logo'] == '') { ?>
-                                                <img src="../assets/image/b-logo.jpg" class="rounded-circle" id="img-show" width="120" height="120" alt="">
+                                                <img src="../assets/image/shop.png" class="rounded-circle" id="img-show" width="120" height="120" alt="">
                                             <?php } else { ?>
                                                 <img src="<?= base_url('/uploads/penjual') . "/" . $toko['Image_logo']; ?>" class="rounded-circle" id="img-show" width="120" height="120" alt="">
                                             <?php } ?>

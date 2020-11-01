@@ -149,16 +149,17 @@ class Auth extends BaseController
 
         $cek = $modellogin->get_login($email, $password);
         $Nama_toko = $this->tokoModel->where('Id_toko', $cek['Id_toko'])
-            ->first();;
+            ->first();
         if ($cek) {
             if (($cek['Email'] == $email) && ($cek['Password'] == $password)) {
                 session()->set('email', $cek['Email']);
                 session()->set('Nama', $cek['Nama']);
                 session()->set('Nama_toko', $Nama_toko["Nama"]);
                 session()->set('Id_toko', $cek["Id_toko"]);
+                session()->set('id', $Nama_toko["id"]);
                 return redirect()->to('/Penjual');
             }
-        } {
+        } else {
             session()->setFlashdata('fail_login', 'Maaf, email atau pasword yang anda masukkan tidak sesuai');
             return redirect()->to('/auth');
         }

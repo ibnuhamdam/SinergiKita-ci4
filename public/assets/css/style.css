@@ -285,6 +285,10 @@ footer {
   font-size: 9px;
 }
 
+.Penjual .card .card-body {
+  min-height: 200px;
+}
+
 .Penjual .card:hover {
   transform: translate(0px, -6px);
   transition: transform ease-in-out 0.3s;

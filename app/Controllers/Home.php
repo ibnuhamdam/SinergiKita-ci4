@@ -3,14 +3,20 @@
 namespace App\Controllers;
 
 use App\Models\BarangModel;
+use App\Models\UserModel;
+use App\Models\TokoModel;
 
 class Home extends BaseController
 {
 	protected $barangModel;
+	protected $userModel;
+	protected $tokoModel;
 
 	public function __construct()
 	{
 		$this->barangModel = new BarangModel();
+		$this->userModel = new UserModel();
+		$this->tokoModel = new TokoModel();
 	}
 
 	public function index()
@@ -41,7 +47,7 @@ class Home extends BaseController
 		$data = [
 			'title' => 'Home | Sinergi Kita',
 			'content' => 'Home/home',
-			'barang' => $barang->paginate(8, 'barang'),
+			'barang' => $barang->paginate(14, 'barang'),
 			'pager' => $this->barangModel->pager
 		];
 		return view('layout/wrapper', $data);
@@ -81,7 +87,9 @@ class Home extends BaseController
 	{
 		$data = [
 			'title' => 'Semua Penjual | Sinergi Kita',
-			'content' => 'Home/semua-penjual'
+			'content' => 'Home/semua-penjual',
+			'user' => $this->tokoModel->paginate(4, 'barang'),
+			'pager' => $this->tokoModel->pager
 		];
 
 		return view('layout/wrapper', $data);
