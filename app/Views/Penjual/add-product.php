@@ -73,7 +73,7 @@
                             </form> -->
                             <form action="<?= base_url(); ?>/penjual/save-product" method="POST" enctype="multipart/form-data">
 
-                            <?php csrf_field(); ?>
+                                <?php csrf_field(); ?>
 
                                 <div class="form-group text-left mt-4 px-4">
                                     <label for="exampleInputEmail1">Gambar Produk</label>
@@ -90,7 +90,7 @@
                                 <div id="show" class="show-camera mx-4">
                                     <i class="fas fa-camera mt-5" id="fa-camera" style="font-size: 80px;"></i>
                                     <img src="" id="img-show" class="img-fluid" alt="">
-                                    
+
                                 </div>
 
                                 <div class="form-group text-left mt-4 px-4">
@@ -103,7 +103,7 @@
 
                                 <div class="form-group text-left mt-4 px-4">
                                     <label for="exampleInputEmail1">Deskripsi barang</label>
-                                    <textarea type="text" name="deskripsi" class="form-control text-center <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : '' ?>" id="exampleInputEmail1" ><?= old('deskripsi'); ?></textarea>
+                                    <textarea type="text" name="deskripsi" class="form-control text-center <?= ($validation->hasError('deskripsi')) ? 'is-invalid' : '' ?>" id="exampleInputEmail1"><?= old('deskripsi'); ?></textarea>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('deskripsi'); ?>
                                     </div>
@@ -121,7 +121,9 @@
                                     <label for="kategori">Kategori</label>
                                     <select class="form-control text-center <?= ($validation->hasError('kategori')) ? 'is-invalid' : '' ?>" id="kategori" name="kategori">
                                         <option>-- Pilih Kategori --</option>
-                                        <option value="makanan">Makanan</option>
+                                        <?php foreach ($kategori as $k) : ?>
+                                            <option value="<?= $k['nama']; ?>" class="text-center"><?= $k['nama']; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?= $validation->getError('kategori'); ?>

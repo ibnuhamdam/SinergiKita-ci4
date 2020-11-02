@@ -47,7 +47,7 @@ class Home extends BaseController
 		$data = [
 			'title' => 'Home | Sinergi Kita',
 			'content' => 'Home/home',
-			'barang' => $barang->paginate(14, 'barang'),
+			'barang' => $barang->paginate(6, 'barang'),
 			'pager' => $this->barangModel->pager
 		];
 		return view('layout/wrapper', $data);
@@ -75,9 +75,18 @@ class Home extends BaseController
 
 	public function produk()
 	{
+		$keyword = $this->request->getVar('keyword');
+		if ($keyword) {
+			$barang = $this->barangModel->search($keyword);
+		} else {
+			$barang = $this->barangModel->get_barang();
+		}
+
 		$data = [
-			'title' => 'Produk | Sinergi Kita',
-			'content' => 'Home/produk'
+			'title' => 'Barang | Sinergi Kita',
+			'content' => 'Home/produk',
+			'barang' => $barang->paginate(14, 'barang'),
+			'pager' => $this->barangModel->pager
 		];
 
 		return view('layout/wrapper', $data);
@@ -101,6 +110,40 @@ class Home extends BaseController
 			'title' => 'Barang yang Disukai | Sinergi Kita',
 			'content' => 'Home/wishlist'
 		];
+
+		return view('layout/wrapper', $data);
+	}
+
+	public function detail_barang($id)
+	{
+		$barang = $this->barangModel->get_barang($id);
+		$data = [
+			'title' => 'Detail Barang | Sinergi Kita',
+			'content' => 'Home/detail-barang',
+			'barang' => $barang->findAll()
+		];
+
+		// dd($data);
+		return view('layout/wrapper', $data);
+	}
+
+	public function kategori($kategori)
+	{
+		$keyword = $this->request->getVar('keyword');
+		if ($keyword) {
+			$barang = $this->barangModel->search($keyword);
+		} else {
+			$barang = $this->barangModel->search_kategori($kategori);
+		}
+
+		$data = [
+			'title' => 'Barang | Sinergi Kita',
+			'content' => 'Home/produk',
+			'barang' => $barang->paginate(14, 'barang'),
+			'pager' => $this->barangModel->pager
+		];
+
+		session()->setFlashdata('kategori', $kategori);
 
 		return view('layout/wrapper', $data);
 	}

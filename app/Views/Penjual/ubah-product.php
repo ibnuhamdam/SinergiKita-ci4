@@ -61,6 +61,9 @@
                                     <label for="kategori">Kategori</label>
                                     <select class="form-control text-center <?= ($validation->hasError('kategori')) ? 'is-invalid' : '' ?>" id="kategori" name="kategori">
                                         <option value="<?= $barang['Kategori'] ?>" class="text-center"><?= $barang['Kategori'] ?></option>
+                                        <?php foreach ($kategori as $k) : ?>
+                                            <option value="<?= $k['nama']; ?>" class="text-center"><?= $k['nama']; ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
 

@@ -169,10 +169,23 @@ footer {
   min-height: 380px;
 }
 
-.produk .card img {
-  width: 100%;
-  min-height: 175px !important;
+@media only screen and (min-width: 768px) {
+
+  .produk .card img {
+    width: 100%;
+    min-height: 280px !important;
+  }
 }
+
+
+@media only screen and (max-width: 468px) {
+
+  .produk .card img {
+    width: 100%;
+    min-height: 175px !important;
+  }
+}
+
 
 .harga-text {
   color: #065446;

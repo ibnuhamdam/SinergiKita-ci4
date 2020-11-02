@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-    <a class="navbar-brand" href="#">Sinergi <span class="bold">Kita</span></a>
+    <a class="navbar-brand" href="/Home/home">Sinergi <span class="bold">Kita</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
         <ul class="navbar-nav">
             <?php
             $uri = service('uri');
@@ -24,7 +24,7 @@
 
             <?php
             $uri = service('uri');
-            if ($uri->getSegment(1) == "produk") {
+            if ($uri->getSegment(1) == "produk" || $uri->getSegment(2) == "produk") {
             ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/produk" style="width: 20% !important;">Produk </a>
@@ -108,16 +108,16 @@
 
             <?php
             $session = session();
-            if ($session->email == null){
+            if ($session->email == null) {
             ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('Auth/index'); ?>" style="width: 30% !important;"><button class="btn btn-outline-success">Masuk</button></a>
                 </li>
             <?php
-            }else{
+            } else {
             ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('/penjual'); ?>" ><button class="btn btn-success"><?= $session->Nama_toko; ?></button></a>
+                    <a class="nav-link" href="<?= base_url('/penjual'); ?>"><button class="btn btn-success"><?= $session->Nama_toko; ?></button></a>
                 </li>
             <?php
             }

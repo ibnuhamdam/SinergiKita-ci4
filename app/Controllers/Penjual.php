@@ -5,12 +5,14 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\TokoModel;
 use App\Models\BarangModel;
+use App\Models\KategoriModel;
 
 class Penjual extends BaseController
 {
     protected $tokoModel;
     protected $userModel;
     protected $barangModel;
+    protected $kategoriModel;
 
     public function __construct()
     {
@@ -18,6 +20,7 @@ class Penjual extends BaseController
         $this->tokoModel = new TokoModel();
         $this->userModel = new UserModel();
         $this->barangModel = new BarangModel();
+        $this->kategoriModel = new KategoriModel();
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
@@ -50,12 +53,14 @@ class Penjual extends BaseController
     public function add_product()
     {
         $session = session();
+        $kategori = $this->kategoriModel->findAll();
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
         $data = [
             'title' => 'Tambah Barang | Dashboard Penjual',
             'content' => 'Penjual/add-product',
+            'kategori' => $kategori,
             'validation' => \Config\Services::validation()
         ];
 
@@ -92,6 +97,8 @@ class Penjual extends BaseController
     {
         $session = session();
 
+        $kategori = $this->kategoriModel->findAll();
+
         if ($session->email == null || $session->email == '') {
             return redirect()->to('/auth');
         }
@@ -102,6 +109,7 @@ class Penjual extends BaseController
             'title' => 'Ubah Profile | Dashboard Penjual',
             'content' => 'Penjual/ubah-product',
             'barang' => $barang,
+            'kategori' => $kategori,
             'validation' => \Config\Services::validation()
         ];
 

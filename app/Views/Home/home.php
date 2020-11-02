@@ -3,13 +3,11 @@
 
         <div class="row">
             <div class="col-sm-12 search p-4">
-                <form action="#">
+                <form action="<?= base_url('Home/produk'); ?>" method="POST">
                     <div class="form-group">
                         <div class="input-group relative ">
-                            <form action="<?= base_url('Home/home'); ?>" method="POST">
                                 <input type="text" name="keyword" class="form-control search-input shadow" placeholder="Cari Barang" aria-label="Search">
                                 <a href="" type="submit"><i class="fas fa-search search-icon"></i></a>
-                            </form>
                         </div>
                     </div>
                 </form>
@@ -63,34 +61,34 @@
         <div class="row">
 
             <div class="col-3 text-center">
-                <a href="#">
+                <a href="<?= base_url('/Home/kategori/makanan'); ?>">
                     <div class="kategori-item shadow p-2">
-                        <img src="assets/image/food.png" class="img-fluid" width="50" alt="">
+                        <img src="/assets/image/food.png" class="img-fluid" width="50" alt="">
 
                     </div>
                     <h6 class="text-hijau-1 mt-1">Makanan</h6>
                 </a>
             </div>
             <div class="col-3 text-center">
-                <a href="#">
+                <a href="<?= base_url('/Home/kategori/elektronik'); ?>">
                     <div class="kategori-item shadow p-2 text-center">
-                        <img src="assets/image/device.png" class="img-fluid" width="50" alt="">
+                        <img src="/assets/image/device.png" class="img-fluid" width="50" alt="">
                     </div>
                     <h6 class="text-hijau-1 mt-1">Elektronik</h6>
                 </a>
             </div>
             <div class="col-3 text-center">
-                <a href="#">
+                <a href="<?= base_url('/Home/kategori/pakaian'); ?>">
                     <div class="kategori-item shadow p-2 text-center">
-                        <img src="assets/image/shirt.png" class="img-fluid" width="50" alt="">
+                        <img src="/assets/image/shirt.png" class="img-fluid" width="50" alt="">
                     </div>
                     <h6 class="text-hijau-1 mt-1">Pakaian</h6>
                 </a>
             </div>
             <div class="col-3 text-center">
-                <a href="#">
+                <a href="<?= base_url('/Home/kategori/sayuran'); ?>">
                     <div class="kategori-item shadow p-2 text-center">
-                        <img src="assets/image/spinach.png" class="img-fluid" width="50" alt="">
+                        <img src="/assets/image/spinach.png" class="img-fluid" width="50" alt="">
                     </div>
                     <h6 class="text-hijau-1 mt-1">Sayuran</h6>
                 </a>
@@ -108,13 +106,13 @@
         <div class="row">
 
             <?php foreach ($barang as $b) : ?>
-                <div class="col-6 col-md-4 mt-3">
-                    <a href="">
+                <div class="col-6 col-md-3 mt-3">
+                    <a href="/Home/detail_barang/<?= $b['id']; ?>">
                         <div class="card text-center" style="width: 100%;">
                             <?php if ($b['Gambar'] != '') { ?>
-                                <img src="<?= base_url('uploads/barang') . '/' . $b['Gambar']; ?>" class="card-img-top img-fluid" alt="<?= $b["Nama"]; ?>">
+                                <img src="<?= base_url('/uploads/barang') . '/' . $b['Gambar']; ?>" class="card-img-top img-fluid" alt="<?= $b["Nama"]; ?>">
                             <?php } else { ?>
-                                <img src="<?= base_url('assets/image'); ?>/image.png" class="card-img-top img-fluid" alt="<?= $b["Nama"]; ?>">
+                                <img src="<?= base_url(); ?>/assets/image/image.png" class="card-img-top img-fluid" alt="<?= $b["Nama"]; ?>">
                             <?php } ?>
                             <div class="card-body">
                                 <p class="card-text judul-text  "><?= $b['Nama']; ?></p>
@@ -130,7 +128,9 @@
 
 
             <div class="load-more col-12 text-center mt-3">
-                <?= $pager->links('barang', 'bs_pager'); ?>
+                <a href="<?= base_url('Home/produk'); ?>">
+                    <button class="btn btn-success px-4">Lihat Barang Lainnya</button>
+                </a>
             </div>
 
         </div>
