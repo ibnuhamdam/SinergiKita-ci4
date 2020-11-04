@@ -39,7 +39,7 @@
                     <?php foreach ($user as $u) : ?>
                         <div class="col-6 col-md-4 py-2">
                             <div class="Penjual">
-                                <a href="">
+                                <a href="<?= base_url("Home/detail_penjual/") . '/' . $u['id']; ?>">
                                     <div class="card text-center">
                                         <div class="col-12">
                                             <?php if ($u["Image_logo"] != null) {

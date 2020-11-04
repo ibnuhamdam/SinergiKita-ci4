@@ -362,7 +362,7 @@ footer {
 /* Detail Penjual */
 
 .detail-penjual .bg-image {
-  background-image: url("../image/sayuran.png");
+  
   background-size: cover;
   background-repeat: no-repeat;
   height: 380px;

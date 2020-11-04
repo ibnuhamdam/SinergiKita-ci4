@@ -24,7 +24,7 @@
 
             <?php
             $uri = service('uri');
-            if ($uri->getSegment(1) == "produk" || $uri->getSegment(2) == "produk") {
+            if ($uri->getSegment(1) == "produk" || $uri->getSegment(2) == "produk" || $uri->getSegment(2) == "kategori") {
             ?>
                 <li class="nav-item active">
                     <a class="nav-link" href="/produk" style="width: 20% !important;">Produk </a>

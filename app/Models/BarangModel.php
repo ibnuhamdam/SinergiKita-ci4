@@ -11,19 +11,34 @@ class BarangModel extends Model
     protected $useTimestamps = true;
     protected $allowedFields = ["Id_toko", "Nama", "Deskripsi", "Harga", "Kategori", "Slug", "Gambar"];
 
-    public function get_barang($id = null)
+    public function get_barang($table = 'barang', $params = 'barang.id', $id = null)
     {
         if ($id != null) {
-            $builder = $this->table('barang');
+            $builder = $this->table($table);
             $builder->select('barang.id,barang.Nama,barang.Deskripsi,barang.Gambar,toko.Image_logo,barang.Harga,toko.Alamat,toko.Nama AS Toko');
             $builder->orderBy('barang.id', 'RANDOM');
-            $builder->where('barang.id', $id);
-            $barang = $builder->join('toko', 'toko.Id_toko = barang.Id_toko');
+            $builder->where($params, $id);
+            $barang = $builder->join($table, 'toko.Id_toko = barang.Id_toko');
         } else {
             $builder = $this->table('barang');
             $builder->select('barang.id,barang.Nama,barang.Gambar,barang.Harga,toko.Alamat');
             $builder->orderBy('barang.id', 'RANDOM');
             $barang = $builder->join('toko', 'toko.Id_toko = barang.Id_toko');
+        }
+
+        return $barang;
+    }
+
+    public function get_count_barang($id = null)
+    {
+        if ($id != null) {
+            $builder = $this->table('barang');
+            $builder->where('toko.id', $id);
+            $builder->join('toko', 'toko.Id_toko = barang.Id_toko');
+            $barang = $builder->countAllResults();
+        } else {
+            $builder = $this->table('barang');
+            $barang = $builder->countAllResults();
         }
 
         return $barang;

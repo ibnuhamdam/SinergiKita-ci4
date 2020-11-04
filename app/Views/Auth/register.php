@@ -100,6 +100,7 @@
             <div class="row home">
                 <div class="col-md-8 offset-md-2 col-sm-12">
                     Daftar untuk<br> menjadi mitra <br> <span class="bolded">Sinergi Kita</span>
+
                 </div>
             </div>
             <div class="row login-form">

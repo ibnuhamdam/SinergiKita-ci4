@@ -40,6 +40,7 @@ $routes->get('/tentang-kami', 'Home::tentang_kami');
 $routes->get('/produk', 'Home::produk');
 $routes->get('/semua-penjual', 'Home::semua_penjual');
 $routes->get('/wishlist', 'Home::wishlist');
+$routes->get('/detail-penjual/(:any)', 'Home::detail_penjual/$1');
 // POST
 $routes->post('/home', 'Home::home');
 

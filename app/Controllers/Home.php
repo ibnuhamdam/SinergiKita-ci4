@@ -26,12 +26,11 @@ class Home extends BaseController
 
 		$data = [
 			'title' => 'Home | Sinergi Kita',
+			'content' => 'Home/index',
 			'barang' => $barang
 		];
 
-		echo view('layout/header', $data);
-		echo view('Home/index', $data);
-		echo view('layout/footer');
+		return view('layout/wrapper', $data);
 	}
 
 	public function home()
@@ -104,6 +103,23 @@ class Home extends BaseController
 		return view('layout/wrapper', $data);
 	}
 
+	public function detail_penjual($id)
+	{
+		$user_data = $this->tokoModel->get_user($id);
+		$total = $this->barangModel->get_count_barang($id);
+		$barang = $this->barangModel->get_barang('toko', 'toko.id', $id);
+		$data = [
+			'title' => 'Detail Penjual | Sinergi Kita',
+			'content' => 'Home/detail-penjual',
+			'user' => $user_data->findAll(),
+			'total' => $total,
+			'barang' => $barang->paginate(6, 'barang'),
+			'pager' => $this->barangModel->pager
+		];
+
+		return view('layout/wrapper', $data);
+	}
+
 	public function wishlist()
 	{
 		$data = [
@@ -116,7 +132,7 @@ class Home extends BaseController
 
 	public function detail_barang($id)
 	{
-		$barang = $this->barangModel->get_barang($id);
+		$barang = $this->barangModel->get_barang('barang', 'barang.id', $id);
 		$data = [
 			'title' => 'Detail Barang | Sinergi Kita',
 			'content' => 'Home/detail-barang',
