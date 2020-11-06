@@ -4,16 +4,19 @@ namespace App\Controllers;
 
 use App\Models\UserModel;
 use App\Models\TokoModel;
+use App\Models\WishlistModel;
 
 class Auth extends BaseController
 {
     protected $userModel;
     protected $tokoModel;
+    protected $wishlistModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
         $this->tokoModel = new TokoModel();
+        $this->wishlistModel = new WishlistModel();
         if (session()->email != null || session()->email != '') {
             return redirect()->to('/penjual');
         }
@@ -145,7 +148,6 @@ class Auth extends BaseController
 
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
-
 
         $cek = $modellogin->get_login($email, $password);
         $Nama_toko = $this->tokoModel->where('Id_toko', $cek['Id_toko'])

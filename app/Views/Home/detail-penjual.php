@@ -15,9 +15,10 @@
                                 <h6 class="card-subtitle mb-2 text-hijau-1"><?= $u["Alamat"]; ?></h6>
                                 <p class=" card-text"><?= $u["Deskripsi"]; ?></p>
                                 <h6 class="card-subtitle mb-2 text-hijau-1 bold"><?= $u["No_handphone"]; ?></h6>
+                                <a href="https://api.whatsapp.com/send?phone=62<?= $u["No_handphone"]; ?>" target="__BLANK">
                                 <button class="btn btn-success px-4"><i class="fab fa-whatsapp"></i> Hubungi
                                     Penjual</button>
-
+                                </a>
                                 <div class="row mt-3">
                                     <div class="col-6">
                                         <h1><?= $total; ?></h1> Barang Dijual

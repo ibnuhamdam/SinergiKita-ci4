@@ -15,10 +15,16 @@ class BarangModel extends Model
     {
         if ($id != null) {
             $builder = $this->table($table);
-            $builder->select('barang.id,barang.Nama,barang.Deskripsi,barang.Gambar,toko.Image_logo,barang.Harga,toko.Alamat,toko.Nama AS Toko');
-            $builder->orderBy('barang.id', 'RANDOM');
+            $builder->select('barang.id,barang.Nama,barang.Deskripsi,barang.Gambar,toko.Image_logo,toko.id as toko_id,barang.Harga,toko.Alamat,toko.Nama AS Toko,user.No_handphone');
+            $builder->orderBy($params, 'RANDOM');
             $builder->where($params, $id);
-            $barang = $builder->join($table, 'toko.Id_toko = barang.Id_toko');
+            if ($table == 'barang') {
+                $builder->join('toko', 'toko.Id_toko = barang.Id_toko');
+                $barang = $builder->join('user', 'user.Id_toko = toko.Id_toko');
+            } else if ($table == 'toko') {
+                $builder->join('barang', 'barang.Id_toko = toko.Id_toko');
+                $barang = $builder->join('user', 'user.Id_toko = toko.Id_toko');
+            }
         } else {
             $builder = $this->table('barang');
             $builder->select('barang.id,barang.Nama,barang.Gambar,barang.Harga,toko.Alamat');

@@ -1,16 +1,16 @@
-<?php if  ($content != "Home/detail-barang" && $content != "Home/semua-penjual")  { ?>
-        <div class="container">
-            <div class="row">
+<?php if ($content != "Home/detail-barang" && $content != "Home/semua-penjual" && $content != "Home/wishlist") { ?>
+    <div class="container">
+        <div class="row">
 
-                <div class="col-12">
-                    <footer class="fixed">
-                        All Right Reserved @Sinergi Kita 2020
-                    </footer>
-
-                </div>
+            <div class="col-12">
+                <footer class="fixed">
+                    All Right Reserved @Sinergi Kita 2020
+                </footer>
 
             </div>
+
         </div>
+    </div>
 <?php } ?>
 
 <!-- Optional JavaScript; choose one of the two! -->
