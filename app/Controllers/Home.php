@@ -132,7 +132,7 @@ class Home extends BaseController
 
 	public function detail_barang($id)
 	{
-		$barang = $this->barangModel->get_barang('barang', 'barang.id', $id);
+		$barang = $this->barangModel->get_barang('toko', 'barang.id', $id);
 		$data = [
 			'title' => 'Detail Barang | Sinergi Kita',
 			'content' => 'Home/detail-barang',
