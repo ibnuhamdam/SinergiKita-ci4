@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2020 at 09:41 AM
+-- Generation Time: Nov 06, 2020 at 09:32 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -51,17 +51,17 @@ INSERT INTO `barang` (`id`, `Id_toko`, `Nama`, `Deskripsi`, `Harga`, `Kategori`,
 (3, 'Madu23102020-gCfDRksxLy', 'Kaos Striped Biasa', 'Kaos striped berbahan cotton combad 3s yang nyaman dipakain', '45.000', 'makanan', 'baju-polos-cotton-combad', NULL, '2020-10-26 11:40:07', '2020-10-26 14:18:25', '2020-10-26 14:18:25'),
 (4, 'Madu23102020-gCfDRksxLy', 'Kaos Striped hijaus', 'Kaos striped berbahan cotton combad 3s yang nyaman dipakain', '55.000', 'makanan', 'kaos-striped-hijau', '1603687774_6ef01a7a77634c7278df.png', '2020-10-26 11:49:34', '2020-10-26 13:59:58', NULL),
 (5, 'Madu23102020-gCfDRksxLy', 'Kaos Multi Warna Combed', 'Kaos dengan multi warna yang sangat cool bagi pria, yuk dibeli gan/sist', '40.000', 'makanan', 'kaos-multi-warna-combed', '1603696695_4d267b60c8551ebdc71f.png', '2020-10-26 14:18:15', '2020-10-26 14:18:15', NULL),
-(6, 'Madu23102020-gCfDRksxLy', 'Kaos Polos POLO', 'Dijual kaos polo motif warna putih, namun belum ada fotonya nih', '80.000', 'makanan', 'kaos-polos-polo', NULL, '2020-10-26 14:23:11', '2020-10-26 14:23:11', NULL),
-(57, 'qui70141168-molestiaeminima', 'Rika Andriani', 'Distinctio officiis quas minus aliquam in illo natus cumque. Modi optio aut voluptatem doloribus voluptatem enim voluptas. Velit explicabo voluptatibus eaque consectetur velit omnis cumque. Tenetur saepe earum omnis ut.', '665.000', 'Jln. Juanda No. 154, Pasuruan 27739, SulTeng', 'rika-andriani', NULL, '1971-03-08 05:47:22', '2020-10-26 04:17:56', NULL),
-(58, 'qui70141168-molestiaeminima', 'Bella Yuniar S.Gz', 'Vel alias nihil ullam veritatis aliquam et architecto. Natus cupiditate et quod voluptatem deleniti. Voluptatum iste velit in id voluptas praesentium rerum.', '927.000', 'Dk. Achmad Yani No. 385, Kendari 74318, KalUt', 'bella-yuniar-sgz', NULL, '2015-11-09 11:03:18', '2020-10-26 04:17:56', NULL),
-(59, 'qui70141168-molestiaeminima', 'Eko Natsir', 'Ut culpa velit sint earum ut. Architecto ipsa et dolorem quas eveniet minima aut. Ad blanditiis eos vitae reprehenderit ut aspernatur nostrum.', '950.000', 'Ds. Rajawali Barat No. 806, Pasuruan 42586, Lampung', 'eko-natsir', NULL, '1999-05-21 10:06:24', '2020-10-26 04:17:56', NULL),
-(60, 'qui70141168-molestiaeminima', 'Asirwanda Sirait M.Kom.', 'Recusandae labore et asperiores voluptas cum iusto recusandae perferendis. Dignissimos quis perferendis consectetur est quia aliquam. Ut pariatur ut assumenda deserunt. Esse reiciendis maiores dolorem eum deleniti natus quas.', '207.000', 'Dk. Sutan Syahrir No. 402, Surabaya 24930, Gorontalo', 'asirwanda-sirait-mkom', NULL, '2009-09-04 10:44:07', '2020-10-26 04:17:56', NULL),
-(61, 'qui70141168-molestiaeminima', 'Talia Halimah M.Farm', 'Culpa modi repudiandae culpa eum tempora. Distinctio vel aliquam voluptatem libero. Voluptatem eum quidem sed perspiciatis eveniet quas quis. Quia eos libero exercitationem iusto. Eos et omnis optio ad rerum eos doloribus.', '264.000', 'Ki. Pattimura No. 693, Palembang 52641, SumSel', 'talia-halimah-mfarm', NULL, '1988-12-17 06:33:10', '2020-10-26 04:17:56', NULL),
-(62, 'qui70141168-molestiaeminima', 'Puspa Hartati', 'Quisquam earum minus aut repudiandae consequatur iure. Quos ipsa nisi et veritatis fuga minima. Et rerum laborum rerum exercitationem voluptas nobis quidem. Magnam ab incidunt rem reprehenderit voluptate omnis sunt. Tempore magnam voluptates repudiandae non odio.', '981.000', 'Gg. Babah No. 784, Tual 58719, JaBar', 'puspa-hartati', NULL, '1970-08-25 10:50:58', '2020-10-26 04:17:56', NULL),
-(63, 'qui70141168-molestiaeminima', 'Harto Simbolon', 'Sunt tenetur veniam sunt ut cumque ut. Delectus corrupti ad alias voluptate laudantium deleniti nihil eos. Est molestias temporibus placeat cum sit. Molestiae aut quo ullam et.', '820.000', 'Ds. Bata Putih No. 745, Bengkulu 15447, SumUt', 'harto-simbolon', NULL, '2013-04-03 18:09:52', '2020-10-26 04:17:56', NULL),
-(64, 'qui70141168-molestiaeminima', 'Elvina Wulandari', 'Sed distinctio et sed enim non aut. Animi et quos officiis est laborum et ut. Enim quos et voluptas maiores.', '604.000', 'Dk. Muwardi No. 881, Pangkal Pinang 97975, SulUt', 'elvina-wulandari', NULL, '2003-03-04 05:02:24', '2020-10-26 04:17:56', NULL),
-(65, 'qui70141168-molestiaeminima', 'Adiarja Okto Siregar M.Pd', 'Est quasi omnis architecto est iusto dolores aut est. Dolor eos unde blanditiis. A illum est placeat recusandae aliquid velit itaque.', '443.000', 'Psr. Raden No. 215, Denpasar 88498, SulSel', 'adiarja-okto-siregar-mpd', NULL, '1994-04-28 15:27:10', '2020-10-26 04:17:56', NULL),
-(66, 'qui70141168-molestiaeminima', 'Saiful Pranowo', 'Optio repellendus accusantium voluptatem deleniti qui adipisci sit. Aut ea sunt debitis natus inventore quod. Voluptatum tempore culpa quos. Id laborum iste ratione culpa eum ea accusantium nam.', '961.000', 'Gg. Banda No. 828, Bandung 94831, SumBar', 'saiful-pranowo', NULL, '2020-08-15 05:46:01', '2020-10-26 04:17:56', NULL);
+(6, 'Madu23102020-gCfDRksxLy', 'Kaos Polos POLO', 'Dijual kaos polo motif warna putih, namun belum ada fotonya nih', '80.000', 'pakaian', 'kaos-polos-polo', NULL, '2020-10-26 14:23:11', '2020-10-26 14:23:11', NULL),
+(57, 'qui70141168-molestiaeminima', 'Rika Andriani', 'Distinctio officiis quas minus aliquam in illo natus cumque. Modi optio aut voluptatem doloribus voluptatem enim voluptas. Velit explicabo voluptatibus eaque consectetur velit omnis cumque. Tenetur saepe earum omnis ut.', '665.000', 'alat', 'rika-andriani', NULL, '1971-03-08 05:47:22', '2020-10-26 04:17:56', NULL),
+(58, 'qui70141168-molestiaeminima', 'Bella Yuniar S.Gz', 'Vel alias nihil ullam veritatis aliquam et architecto. Natus cupiditate et quod voluptatem deleniti. Voluptatum iste velit in id voluptas praesentium rerum.', '927.000', 'pakaian', 'bella-yuniar-sgz', NULL, '2015-11-09 11:03:18', '2020-10-26 04:17:56', NULL),
+(59, 'qui70141168-molestiaeminima', 'Eko Natsir', 'Ut culpa velit sint earum ut. Architecto ipsa et dolorem quas eveniet minima aut. Ad blanditiis eos vitae reprehenderit ut aspernatur nostrum.', '950.000', 'pakaian', 'eko-natsir', NULL, '1999-05-21 10:06:24', '2020-10-26 04:17:56', NULL),
+(60, 'qui70141168-molestiaeminima', 'Asirwanda Sirait M.Kom.', 'Recusandae labore et asperiores voluptas cum iusto recusandae perferendis. Dignissimos quis perferendis consectetur est quia aliquam. Ut pariatur ut assumenda deserunt. Esse reiciendis maiores dolorem eum deleniti natus quas.', '207.000', 'pakaian', 'asirwanda-sirait-mkom', NULL, '2009-09-04 10:44:07', '2020-10-26 04:17:56', NULL),
+(61, 'qui70141168-molestiaeminima', 'Talia Halimah M.Farm', 'Culpa modi repudiandae culpa eum tempora. Distinctio vel aliquam voluptatem libero. Voluptatem eum quidem sed perspiciatis eveniet quas quis. Quia eos libero exercitationem iusto. Eos et omnis optio ad rerum eos doloribus.', '264.000', 'kesehatan', 'talia-halimah-mfarm', NULL, '1988-12-17 06:33:10', '2020-10-26 04:17:56', NULL),
+(62, 'qui70141168-molestiaeminima', 'Puspa Hartati', 'Quisquam earum minus aut repudiandae consequatur iure. Quos ipsa nisi et veritatis fuga minima. Et rerum laborum rerum exercitationem voluptas nobis quidem. Magnam ab incidunt rem reprehenderit voluptate omnis sunt. Tempore magnam voluptates repudiandae non odio.', '981.000', 'kesehatan', 'puspa-hartati', NULL, '1970-08-25 10:50:58', '2020-10-26 04:17:56', NULL),
+(63, 'qui70141168-molestiaeminima', 'Harto Simbolon', 'Sunt tenetur veniam sunt ut cumque ut. Delectus corrupti ad alias voluptate laudantium deleniti nihil eos. Est molestias temporibus placeat cum sit. Molestiae aut quo ullam et.', '820.000', 'penyewaan', 'harto-simbolon', NULL, '2013-04-03 18:09:52', '2020-10-26 04:17:56', NULL),
+(64, 'qui70141168-molestiaeminima', 'Elvina Wulandari', 'Sed distinctio et sed enim non aut. Animi et quos officiis est laborum et ut. Enim quos et voluptas maiores.', '604.000', 'penyewaan', 'elvina-wulandari', NULL, '2003-03-04 05:02:24', '2020-10-26 04:17:56', NULL),
+(65, 'qui70141168-molestiaeminima', 'Adiarja Okto Siregar M.Pd', 'Est quasi omnis architecto est iusto dolores aut est. Dolor eos unde blanditiis. A illum est placeat recusandae aliquid velit itaque.', '443.000', 'kesehatan', 'adiarja-okto-siregar-mpd', NULL, '1994-04-28 15:27:10', '2020-10-26 04:17:56', NULL),
+(66, 'qui70141168-molestiaeminima', 'Saiful Pranowo', 'Optio repellendus accusantium voluptatem deleniti qui adipisci sit. Aut ea sunt debitis natus inventore quod. Voluptatum tempore culpa quos. Id laborum iste ratione culpa eum ea accusantium nam.', '961.000', 'penyewaan', 'saiful-pranowo', NULL, '2020-08-15 05:46:01', '2020-10-26 04:17:56', NULL);
 
 -- --------------------------------------------------------
 
@@ -71,10 +71,24 @@ INSERT INTO `barang` (`id`, `Id_toko`, `Nama`, `Deskripsi`, `Harga`, `Kategori`,
 
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
-  `nama` int(11) NOT NULL,
-  `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
+  `nama` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kategori`
+--
+
+INSERT INTO `kategori` (`id`, `nama`, `created_at`, `updated_at`) VALUES
+(1, 'makanan', '2020-11-02 01:17:16', '2020-11-02 01:17:16'),
+(2, 'pakaian', '2020-11-02 01:17:44', '2020-11-02 01:17:44'),
+(3, 'sayuran', '2020-11-02 01:17:53', '2020-11-02 01:17:53'),
+(4, 'elektronik', '2020-11-02 01:18:01', '2020-11-02 01:18:01'),
+(5, 'kesehatan', '2020-11-02 01:18:12', '2020-11-02 01:18:12'),
+(6, 'alat', '2020-11-02 01:18:22', '2020-11-02 01:18:22'),
+(7, 'penyewaan', '2020-11-02 01:18:30', '2020-11-02 01:18:30'),
+(8, 'lainnya', '2020-11-02 01:18:37', '2020-11-02 01:18:37');
 
 -- --------------------------------------------------------
 
@@ -117,7 +131,7 @@ INSERT INTO `toko` (`id`, `Id_toko`, `Nama`, `Deskripsi`, `Alamat`, `Image_logo`
 (1, 'Madu23102020-gCfDRksxLy', 'Madu Lezat Basari', 'madu lezat nikmat mantap besara l asd asdakda okaysh kak', 'Sampangan, Semarang', '1603609748_973fdb8009ec6d537602.jpg', '2020-10-23 22:49:54', '2020-10-26 14:00:24'),
 (2, 'aut84882485-eteaque', 'Wani Pudjiastuti', 'Voluptatum quia dolore recusandae explicabo expedita. Qui esse aut fugit delectus pariatur maxime. Minima voluptatem aperiam totam commodi est id.', 'Ds. Wahid No. 710, Tual 34046, DIY', NULL, '2012-12-08 20:49:22', '2020-10-26 04:10:09'),
 (3, 'odit8909957-sedtempora', 'Kani Wastuti', 'Accusantium dolores commodi ducimus atque adipisci quia animi sequi. Fugiat sed iste qui. Cumque eaque temporibus tempore sit quibusdam. Necessitatibus ipsam hic vero magni velit harum ut.', 'Jln. Rajawali Barat No. 796, Tangerang 19453, SulTra', NULL, '1994-09-20 17:37:26', '2020-10-26 04:10:09'),
-(4, 'accusantium51486041-exsoluta', 'Irma Widiastuti', 'Sapiente earum a et necessitatibus numquam. Sit excepturi et distinctio amet iste voluptatem exercitationem. Sit voluptates id enim voluptatibus ducimus.', 'Gg. Katamso No. 572, Mojokerto 37824, SulBar', NULL, '2015-07-17 03:57:03', '2020-10-26 04:10:09'),
+(4, 'Wacan26102020-gCfDRksxLy', 'Irma Widiastuti', 'Sapiente earum a et necessitatibus numquam. Sit excepturi et distinctio amet iste voluptatem exercitationem. Sit voluptates id enim voluptatibus ducimus.', 'Gg. Katamso No. 572, Mojokerto 37824, SulBar', NULL, '2015-07-17 03:57:03', '2020-10-26 04:10:09'),
 (5, 'perferendis85867633-corporispariatur', 'Cinta Rahimah', 'Corrupti quia et voluptates itaque. Velit repellendus modi corporis provident. Qui rem sit veniam.', 'Kpg. Banda No. 640, Bukittinggi 25000, KalTeng', NULL, '2004-05-15 12:38:02', '2020-10-26 04:10:09'),
 (6, 'qui70141168-molestiaeminima', 'Kalim Widodo', 'Corrupti sed voluptate enim sapiente minus adipisci. Quia fugiat illum quis voluptatem voluptatem dolore non. Sint mollitia velit officia voluptatum voluptatem.', 'Psr. Yoga No. 733, Bogor 24720, KalTeng', NULL, '1994-04-03 18:01:28', '2020-10-26 04:10:09');
 
@@ -145,10 +159,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Id_user`, `Id_toko`, `Nama`, `Email`, `Password`, `No_ktp`, `Alamat`, `No_handphone`, `created_at`, `updated_at`) VALUES
-(1, 'Madu23102020-gCfDRksxLy', 'Wacana', 'bas@asd.com', 'basari', 2147483647, 'Sampangan, Semarang', '085727633969', '2020-10-23 22:49:54', '2020-10-26 14:18:56'),
-(2, 'Wacan26102020-gCfDRksxLy', 'Ibnu Hamdam', 'Ibnu.hamdam16@gmail.com', 'ibnuhamdamms', 2147483647, 'Gonilan Asri Pabelan', '06872662535212', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(6, 'Wacan26102020-aSgTgjdyAs', 'Ismail Syai', 'Ismail@gmail.com', 'ismail', 2147483647, 'Langenharjo', '08762662535212', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(9, '31432165', 'Shania Hasanah', 'dodo06@gmail.co.id', '7&Aj\"m', 85567982, 'Gg. Bagas Pati No. 885, Pematangsiantar 32308, Lampung', '021 6074 835', '2004-02-19 05:28:18', '2020-10-26 03:53:46');
+(1, 'Madu23102020-gCfDRksxLy', 'Wacana', 'bas@asd.com', 'basari', 2147483647, 'Sampangan, Semarang', '85727633969', '2020-10-23 22:49:54', '2020-10-26 14:18:56'),
+(2, 'Wacan26102020-gCfDRksxLy', 'Ibnu Hamdam', 'Ibnu.hamdam16@gmail.com', 'ibnuhamdamms', 2147483647, 'Gonilan Asri Pabelan', '872662535212', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(6, 'Wacan26102020-aSgTgjdyAs', 'Ismail Syai', 'Ismail@gmail.com', 'ismail', 2147483647, 'Langenharjo', '8762662535212', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(9, 'qui70141168-molestiaeminima', 'Shania Hasanah', 'dodo06@gmail.co.id', '7&Aj\"m', 85567982, 'Gg. Bagas Pati No. 885, Pematangsiantar 32308, Lampung', '85727633969', '2004-02-19 05:28:18', '2020-10-26 03:53:46');
 
 -- --------------------------------------------------------
 
@@ -157,11 +171,32 @@ INSERT INTO `user` (`Id_user`, `Id_toko`, `Nama`, `Email`, `Password`, `No_ktp`,
 --
 
 CREATE TABLE `wishlist` (
-  `Id_wishlist` int(11) NOT NULL,
-  `id_user` int(20) NOT NULL,
-  `id_barang` int(20) NOT NULL,
-  `created_at` datetime NOT NULL
+  `id` int(11) NOT NULL,
+  `Id_toko` varchar(255) NOT NULL,
+  `Id_barang` int(20) NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `deleted_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`id`, `Id_toko`, `Id_barang`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Madu23102020-gCfDRksxLy', 64, '2020-11-05 21:08:34', '2020-11-06 02:34:30', '2020-11-06 02:34:30'),
+(2, 'Madu23102020-gCfDRksxLy', 4, '2020-11-06 01:31:28', '2020-11-06 01:31:28', '0000-00-00 00:00:00'),
+(3, 'Madu23102020-gCfDRksxLy', 5, '2020-11-06 01:36:44', '2020-11-06 01:36:44', '0000-00-00 00:00:00'),
+(5, 'Madu23102020-gCfDRksxLy', 60, '2020-11-06 02:36:06', '2020-11-06 02:36:06', '0000-00-00 00:00:00'),
+(6, 'Madu23102020-gCfDRksxLy', 65, '2020-11-06 02:37:23', '2020-11-06 02:37:32', '2020-11-06 02:37:32'),
+(7, 'Madu23102020-gCfDRksxLy', 65, '2020-11-06 02:41:46', '2020-11-06 02:41:46', '0000-00-00 00:00:00'),
+(8, 'Madu23102020-gCfDRksxLy', 58, '2020-11-06 02:41:59', '2020-11-06 02:41:59', '0000-00-00 00:00:00'),
+(9, 'Madu23102020-gCfDRksxLy', 66, '2020-11-06 02:42:13', '2020-11-06 02:44:28', '2020-11-06 02:44:28'),
+(10, 'Madu23102020-gCfDRksxLy', 6, '2020-11-06 02:42:20', '2020-11-06 02:44:26', '2020-11-06 02:44:26'),
+(11, 'Madu23102020-gCfDRksxLy', 64, '2020-11-06 02:43:41', '2020-11-06 02:44:24', '2020-11-06 02:44:24'),
+(12, 'qui70141168-molestiaeminima', 4, '2020-11-06 02:59:48', '2020-11-06 02:59:48', '0000-00-00 00:00:00'),
+(13, 'qui70141168-molestiaeminima', 58, '2020-11-06 03:21:58', '2020-11-06 03:22:11', '2020-11-06 03:22:11'),
+(14, 'qui70141168-molestiaeminima', 60, '2020-11-06 03:22:19', '2020-11-06 03:29:45', '2020-11-06 03:29:45');
 
 --
 -- Indexes for dumped tables
@@ -202,7 +237,7 @@ ALTER TABLE `user`
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD PRIMARY KEY (`Id_wishlist`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -218,7 +253,7 @@ ALTER TABLE `barang`
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -242,7 +277,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `Id_wishlist` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="row mt-1">
                                     <div class="col-5"><button class="btn btn-block btn-outline-danger" data-toggle="modal" data-id="<?= $brg['id']; ?>" data-target="#delete"><i class="fas fa-trash"></i> Hapus
-                                                Produk</button>
+                                            Produk</button>
                                     </div>
                                     <div class="col-7 ubah-produk">
                                         <a href="<?= base_url('penjual/ubah-product') . '/' . $brg['id'] ?>"><button class="btn btn-block btn-primary"><i class="fas fa-pencil-alt"></i> Ubah Produk</button></a>
@@ -53,18 +53,18 @@
                         <div class="modal-dialog modal-dialog-centered ">
                             <div class="modal-content">
                                 <div class="modal-header text-center">
-                                                    <h5 class="modal-title text-center" id="delete">Delete Produk</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
+                                    <h5 class="modal-title text-center" id="delete">Delete Produk</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                                 <div class="modal-body justify-content-center text-center">
-                                                <i class="fas fa-question-circle text-primary" style="font-size:100px;"></i>
-                                                <h5 class="mt-2">Apakah anda yakin untuk menghapus produk ini ?</h5>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                                    <a href="" id="delete-btn"><button type="button" class="btn btn-outline-danger">Hapus Produk</button></a>
+                                    <i class="fas fa-question-circle text-primary" style="font-size:100px;"></i>
+                                    <h5 class="mt-2">Apakah anda yakin untuk menghapus produk ini ?</h5>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                    <a href="" id="delete-btn"><button type="button" class="btn btn-outline-danger">Hapus Produk</button></a>
                                 </div>
                             </div>
                         </div>
@@ -73,21 +73,9 @@
                     <div class="row">
                         <div class="col-12 mt-5 text-center">
                             <div class="row justify-content-center">
-                                <nav aria-label="..." class="justify-content-center">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item active" aria-current="page">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                <div class="load-more col-12 text-center mt-3">
+                                    <?= $pager->links('barang', 'bs_pager'); ?>
+                                </div>
 
                             </div>
                         </div>
@@ -99,4 +87,3 @@
     </div>
 
 </section>
-

@@ -34,7 +34,7 @@ class Penjual extends BaseController
             return redirect()->to('/auth');
         }
 
-        $barang = $this->barangModel->where('Id_toko', $session->Id_toko)->orderBy('id', 'DESC')->findAll();
+        $barang = $this->barangModel->where('Id_toko', $session->Id_toko)->orderBy('id', 'DESC');
 
         // var_dump($barang);
         // $db = \Config\Database::connect();
@@ -44,7 +44,8 @@ class Penjual extends BaseController
         $data = [
             'title' => 'Home | Dashboard Penjual',
             'content' => 'Penjual/index',
-            'barang' => $barang
+            'barang' => $barang->paginate(6, 'barang'),
+            'pager' => $this->barangModel->pager
         ];
 
         return view('p_layout/wrapper', $data);

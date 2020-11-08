@@ -15,67 +15,55 @@
                         </div>
                     </div>
 
+                    <div class="col-12 mx-3">
+                            <?php
+                            $session = session();
+                            if ($session->getFlashdata('pesan')) : ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <?= $session->getFlashdata('pesan'); ?>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            <?php endif; ?>
+                    </div>
+
+                   
+
                     <div class="col-12">
                         <div class="container">
-                            <div class="row card-barang mt-4">
-                                <div class="col-4" style="padding: 0;">
-                                    <img src="assets/image/sayuran.png
-                                        " class="img-fluid" alt="">
-                                </div>
-                                <div class="col-8 py-3 px-4">
-                                    <p class="mb-0">Sayuran-sayuran segar</p>
-                                    <h4 class="text-hijau-2 bold">Rp 2.500 / ikat</h4>
-                                    <div class="penjual">
-                                        <img src="assets/image/b-logo.jpg" width="20" height="20" alt="">
-                                        Bukhori Shop
+                            <?php if($wishlist != null){ ?>
+                                <?php foreach    ($wishlist as $w)    : ?>
+                                    <div class="row card-barang mt-4">
+                                    
+                                        <div class="col-4" style="padding: 0;">
+                                            <?php if($w["Gambar"] != null){ ?>
+                                                <a href="/Home/detail_barang/<?= $w["id"]; ?>">
+                                                    <img src="/uploads/barang/<?= $w["Gambar"]; ?>" class="img-fluid" alt="">
+                                                </a>
+                                            <?php }else{ ?>
+                                                <a href="/Home/detail_barang/<?= $w["id"]; ?>">
+                                                    <img src="/assets/image/image.png" class="img-fluid" alt="">
+                                                </a>
+                                            <?php } ?>
+                                        </div>
+                                        
+                                        <div class="col-6 py-4 px-4">
+                                            <p class="mb-0"><?= $w["Nama"]; ?></p>
+                                            <h4 class="text-hijau-2 bold">Rp <?= $w["Harga"]; ?></h4>
+                                        </div>
+                                        <div class="col-2 py-5 px-1 bg-danger" style="border-top-right-radius: 30px;border-bottom-right-radius: 30px;">
+                                            <a href="/Home/delete_wishlist/<?= $w["wid"]; ?>"><button class="btn"><i class="fa fa-trash text-white"></i></button></a>
+                                        </div>
                                     </div>
+                                
+                                <?php endforeach; ?>
+                            <?php }else{ ?>
+                                <p class="text-white text-center"> Sepertinya anda belum menambahkan barang disukai, </p>
+                                <div class="text-center">
+                                <a href=""> <button class="btn btn-success justify-content-center"> Tambahkan Sekarang ! </button></a>
                                 </div>
-                            </div>
-
-                            <div class="row card-barang mt-4">
-                                <div class="col-4" style="padding: 0;">
-                                    <img src="assets/image/sayuran.png
-                                        " class="img-fluid" alt="">
-                                </div>
-                                <div class="col-8 py-3 px-4">
-                                    <p class="mb-0">Sayuran-sayuran segar</p>
-                                    <h4 class="text-hijau-2 bold">Rp 2.500 / ikat</h4>
-                                    <div class="penjual">
-                                        <img src="assets/image/b-logo.jpg" width="20" height="20" alt="">
-                                        Bukhori Shop
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row card-barang mt-4">
-                                <div class="col-4" style="padding: 0;">
-                                    <img src="assets/image/sayuran.png
-                                        " class="img-fluid" alt="">
-                                </div>
-                                <div class="col-8 py-3 px-4">
-                                    <p class="mb-0">Sayuran-sayuran segar</p>
-                                    <h4 class="text-hijau-2 bold">Rp 2.500 / ikat</h4>
-                                    <div class="penjual">
-                                        <img src="assets/image/b-logo.jpg" width="20" height="20" alt="">
-                                        Bukhori Shop
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row card-barang mt-4">
-                                <div class="col-4" style="padding: 0;">
-                                    <img src="assets/image/sayuran.png
-                                        " class="img-fluid" alt="">
-                                </div>
-                                <div class="col-8 py-3 px-4">
-                                    <p class="mb-0">Sayuran-sayuran segar</p>
-                                    <h4 class="text-hijau-2 bold">Rp 2.500 / ikat</h4>
-                                    <div class="penjual">
-                                        <img src="assets/image/b-logo.jpg" width="20" height="20" alt="">
-                                        Bukhori Shop
-                                    </div>
-                                </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
 
@@ -83,26 +71,17 @@
 
             </div>
 
+            <?php if($pager != null){ ?>
             <div class="col-12 mt-5 text-center">
                 <div class="row justify-content-center">
-                    <nav aria-label="..." class="justify-content-center">
-                        <ul class="pagination">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div class="load-more col-12 text-center mt-3">
+                        <?= $pager->links('barang', 'bs_pager'); ?>
+                    </div>
 
                 </div>
             </div>
+            <?php }else{ ?>
+            <?php } ?>
 
         </div>
     </div>

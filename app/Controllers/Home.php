@@ -5,18 +5,21 @@ namespace App\Controllers;
 use App\Models\BarangModel;
 use App\Models\UserModel;
 use App\Models\TokoModel;
+use App\Models\WishlistModel;
 
 class Home extends BaseController
 {
 	protected $barangModel;
 	protected $userModel;
 	protected $tokoModel;
+	protected $wishlistModel;
 
 	public function __construct()
 	{
 		$this->barangModel = new BarangModel();
 		$this->userModel = new UserModel();
 		$this->tokoModel = new TokoModel();
+		$this->wishlistModel = new WishlistModel();
 	}
 
 	public function index()
@@ -107,7 +110,7 @@ class Home extends BaseController
 	{
 		$user_data = $this->tokoModel->get_user($id);
 		$total = $this->barangModel->get_count_barang($id);
-		$barang = $this->barangModel->get_barang('toko', 'toko.id', $id);
+		$barang = $this->barangModel->get_barang('barang', 'toko.id', $id);
 		$data = [
 			'title' => 'Detail Penjual | Sinergi Kita',
 			'content' => 'Home/detail-penjual',
@@ -122,24 +125,83 @@ class Home extends BaseController
 
 	public function wishlist()
 	{
+		$session = session();
+		$id = $this->wishlistModel->getid($session->Id_toko);
+		if ($id->first() != null) {
+			$wishlist = $this->wishlistModel->get($id->first()["Id_barang"], $session->Id_toko);
+			$data = [
+				'title' => 'Barang yang Disukai | Sinergi Kita',
+				'content' => 'Home/wishlist',
+				'wishlist' => $wishlist->paginate(6, 'barang'),
+				'pager' => $this->wishlistModel->pager
+			];
+		} else {
+			$wishlist = null;
+			$data = [
+				'title' => 'Barang yang Disukai | Sinergi Kita',
+				'content' => 'Home/wishlist',
+				'wishlist' => $wishlist,
+				'pager' => null
+			];
+		}
+
+		// dd($id->first()["Id_barang"]);
+		return view('layout/wrapper', $data);
+	}
+
+	public function delete_wishlist($id)
+	{
+		$delete = $this->wishlistModel->delete($id);
+		if ($delete) {
+			session()->setFlashdata('pesan', 'Data Barang berhasil dihapus !');
+			return redirect()->to('/Home/wishlist');
+		} else {
+			session()->setFlashdata('pesan', 'Barang tidak berhasil di hapus !');
+			return redirect()->to('/Home/wishlist');
+		}
+	}
+
+	public function tambah_wishlist($id)
+	{
+		$session = session();
+		if ($session->email == null || $session->email == '') {
+			session()->setFlashdata('fail_login', 'Maaf, sebelumnya anda harus login dahulu sebelum menggunakan fitur ini');
+			return redirect()->to('/auth');
+		}
 		$data = [
-			'title' => 'Barang yang Disukai | Sinergi Kita',
-			'content' => 'Home/wishlist'
+			'Id_toko' => session()->Id_toko,
+			'Id_barang' => $id
 		];
 
-		return view('layout/wrapper', $data);
+		$save = $this->wishlistModel->save($data);
+
+		if ($save) {
+			$session = session();
+			$session->setFlashdata('pesan', 'Data barang berhasil ditambahkan ke barang yang disukai !');
+
+			return redirect()->to('/Home/wishlist');
+		} else {
+
+			return redirect()->to("/Home/wishlist")->withInput();
+		}
 	}
 
 	public function detail_barang($id)
 	{
-		$barang = $this->barangModel->get_barang('toko', 'barang.id', $id);
+		$wishlist = $this->wishlistModel->match($id, session()->Id_toko)->first();
+		$barang = $this->barangModel->get_barang('barang', 'barang.id', $id);
+		if ($wishlist != null) {
+			$bool = true;
+		} else {
+			$bool = false;
+		}
 		$data = [
 			'title' => 'Detail Barang | Sinergi Kita',
 			'content' => 'Home/detail-barang',
-			'barang' => $barang->findAll()
+			'barang' => $barang->findAll(),
+			'bool' => $bool
 		];
 
-		// dd($data);
 		return view('layout/wrapper', $data);
 	}
 
